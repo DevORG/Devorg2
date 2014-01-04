@@ -1,0 +1,11 @@
+<apex:page id="thePage"
+    standardController="Account"
+    extensions="Account_Email_PDFForm_Ext"
+    showHeader="false"
+    sidebar="false"
+    title="Send Email">
+    <apex:sectionheader title="Send Demo PDF"/>
+    <apex:form id="theForm">
+    </apex:form>
+   
+</apex:page>

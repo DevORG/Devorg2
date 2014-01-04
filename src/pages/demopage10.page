@@ -1,0 +1,231 @@
+<apex:page showHeader="false" standardStylesheets="false">
+
+<head>
+
+        <title>My Thomson Reuters!</title>
+
+        
+
+        <apex:stylesheet value="{!URLFOR($Resource.SourceLatest, 'source/inettuts.js.css')}"/> 
+
+        <link href="{!URLFOR($Resource.SourceLatest, 'source/inettuts.css')}" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+    <apex:composition template="HomePageTemplate">
+<apex:define name="HomePageContent">
+
+    
+
+      <div id="columns">
+
+        <ul id="column1" class="column" >
+           
+            <li class="widget color-orange" >
+                <div class="widget-head">
+                    <h3>Bookmarks</h3>
+                </div>
+                <div class="widget-content">
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam magna sem, fringilla in, commodo a, rutrum ut, massa. Donec id nibh eu dui auctor tempor. Morbi laoreet eleifend dolor. Suspendisse pede odio, accumsan vitae, auctor non, suscipit at, ipsum. Cras varius sapien vel lectus.</p>
+                </div>
+            </li>
+            <li class="widget color-orange">  
+                <div class="widget-head">
+                    <h3>Entitlements</h3>
+                </div>
+                <div class="widget-content">
+                  <!--  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam magna sem, fringilla in, commodo a, rutrum ut, massa. Donec id nibh eu dui auctor tempor. Morbi laoreet eleifend dolor. Suspendisse pede odio, accumsan vitae, auctor non, suscipit at, ipsum. Cras varius sapien vel lectus.</p> -->
+                  <apex:form >
+                      
+                                    <table>
+                                    <tr>
+                                    <td>
+                                        <apex:outputLabel >Client Email*</apex:outputLabel>  
+                                    
+                                    </td>
+                                    <td>
+                                        <apex:inputText style="width: 120px;"/>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td>
+                                        <apex:outputLabel >Subject</apex:outputLabel>  
+                                    
+                                    </td>
+                                    <td>
+                                        <apex:inputTextarea style="width: 120px;" /> 
+                                    </td>
+                                    </tr>
+                                      <tr>
+                                    <td>
+                                        <apex:outputLabel >Phone</apex:outputLabel>  
+                                    
+                                    </td>
+                                    <td>
+                                        <apex:inputText style="width: 120px;" />
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" align="center">
+                                              <apex:commandButton style="width: 80px;" value="Done" /> 
+                                        </td>
+                                    </tr>
+                                    </table>
+            
+
+                                 
+                  </apex:form>
+                </div>
+            </li>
+            <li class="widget color-orange">  
+                <div class="widget-head">
+                    <h3>Notifications</h3>
+                </div>
+                <div class="widget-content">
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam magna sem, fringilla in, commodo a, rutrum ut, massa. Donec id nibh eu dui auctor tempor. Morbi laoreet eleifend dolor. Suspendisse pede odio, accumsan vitae, auctor non, suscipit at, ipsum. Cras varius sapien vel lectus.</p>
+                </div>
+            </li>
+           
+        </ul>
+
+        <ul id="column1" class="column">
+            
+            <li class="widget color-orange">  
+                <div class="widget-head">
+                    <h3>News</h3>
+                </div>
+                <div class="widget-content">
+                   <!-- <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam magna sem, fringilla in, commodo a, rutrum ut, massa. Donec id nibh eu dui auctor tempor. Morbi laoreet eleifend dolor. Suspendisse pede odio, accumsan vitae, auctor non, suscipit at, ipsum. Cras varius sapien vel lectus.</p>-->
+                   <apex:pageblock >
+            <apex:pageBlockSection columns="2" id="section1">
+            
+            <apex:facet name="header">
+            </apex:facet>
+            <apex:facet name="body">
+            <apex:outputPanel >
+                <table>
+                
+                    <tr align = "left" >
+                        <td align = "left" width ="250px"><apex:outputLink value="#" styleClass="homelinks" style="color:blue">Online Software Downloads</apex:outputLink></td>                   
+                          <td rowspan="2"><apex:image value="{!$Resource.Eikon_image}" width="200" height="120" ></apex:image></td>
+                    </tr>
+                    <tr >
+                        <td width ="250px"> <apex:outputlabel > Access downloads for software updates and patches for products and data</apex:outputlabel></td>                       
+                    </tr>
+                    <tr>
+                        <td > <apex:outputLink value="#" styleClass="homelinks" style="color:blue">Product Support (Customer Zone)</apex:outputLink> </td>                   
+                        <td >
+                        <apex:outputText > Support information including user guides, product enhancements and technical documentation for desktop products</apex:outputText>
+                        </td>                            
+                    </tr>
+                    <tr >
+                        
+                    </tr>
+                    <tr>
+                        <td > <apex:outputLink value="#" styleClass="homelinks" style="color:blue">FID Lookup (Customer Zone)</apex:outputLink> </td>                   
+                        <td>
+                         <apex:outputText > Lorem ipsum dolar sita met consectetur, abdispicing eit, sed diyum nonummy</apex:outputText>
+                        </td>
+                    </tr>
+                   <tr >
+                        
+                    </tr>
+                    <tr>
+                        <td  width ="250px"> <apex:outputLink value="#" styleClass="homelinks" style="color:blue">Knowledge Base (Customer Zone)</apex:outputLink> </td>                   
+                         <td  width ="250px"> <apex:outputLink value="#" styleClass="homelinks" style="color:blue">Technical Information Pages</apex:outputLink> </td>                   
+                    </tr>
+                    <tr >
+                        <td width ="250px" ><apex:outputText > Lorem ipsum dolar sita met consectetur, abdispicing eit, sed diyum nonummy</apex:outputText></td>
+                        <td width ="250px" ><apex:outputText > Lorem ipsum dolar sita met consectetur, abdispicing eit, sed diyum nonummy</apex:outputText></td>
+                        </tr>
+                                       
+                </table>
+             </apex:outputPanel>
+             </apex:facet>
+            </apex:pageBlockSection>
+        </apex:pageblock>
+
+                </div>
+            </li>
+            <li class="widget color-orange">  
+                <div class="widget-head">
+                    <h3>Service Requests</h3>
+                </div>
+                <div class="widget-content">
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam magna sem, fringilla in, commodo a, rutrum ut, massa. Donec id nibh eu dui auctor tempor. Morbi laoreet eleifend dolor. Suspendisse pede odio, accumsan vitae, auctor non, suscipit at, ipsum. Cras varius sapien vel lectus.</p>
+                </div>
+            </li>
+        </ul>
+        
+        <ul id="column1" class="column">
+            <li class="widget color-orange">  
+                <div class="widget-head">
+                    <h3>Products</h3>
+                </div>
+                <div class="widget-content">
+                    <table width = "300px" align = "left">
+                <tr >
+                    <td align = "left" width = "30px">RIC Number</td>
+                    <td align = "center" width = "180px">Product</td>
+                    <td align = "center" width = "120px">Action</td>
+                </tr>
+                <tr>
+                    <td align = "left" width = "30px">3044</td>
+                    <td align = "left" width = "180px">Thomson Reuters Data Feed Direct</td>
+                    <td align = "left" width = "120px">For Information</td>
+                </tr>
+                <tr>
+                    <td align = "left" width = "30px">3030</td>
+                    <td align = "left" width = "180px">Reuters DataScope for Equiters</td>
+                    <td align = "left" width = "120px">For Action</td>
+                </tr>
+                <tr>
+                    <td align = "left" width = "30px">3052</td>
+                    <td align = "left" width = "180px">Thomson Reuters Dealing</td>
+                    <td align = "left" width = "120px">For Information</td>
+                </tr>
+            </table>
+
+                </div>
+            </li>
+            <li class="widget color-orange">  
+                <div class="widget-head">
+                    <h3>Featured Product</h3>
+                </div>
+                <div class="widget-content">
+                    <table>
+                    <tr>
+                     <td rowspan="2"><apex:image value="{!$Resource.Eikon_image}" width="250" height="150" ></apex:image></td>
+                    </tr>
+                    </table>
+                </div>
+            </li>
+            <li class="widget color-orange">  
+                <div class="widget-head">
+                    <h3>Billing</h3>
+                </div>
+                <div class="widget-content">
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam magna sem, fringilla in, commodo a, rutrum ut, massa. Donec id nibh eu dui auctor tempor. Morbi laoreet eleifend dolor. Suspendisse pede odio, accumsan vitae, auctor non, suscipit at, ipsum. Cras varius sapien vel lectus.</p>
+                </div>
+            </li>
+        </ul>
+        
+    </div>
+    
+
+   <script type="text/javascript" src="http://jqueryjs.googlecode.com/files/jquery-1.2.6.min.js"> </script>
+
+   <script type="text/javascript" src="{!URLFOR($Resource.SourceLatest, 'source/jquery-ui-personalized-1.6rc2.min.js')}"></script>
+
+    <script type="text/javascript" src="{!URLFOR($Resource.SourceLatest, 'source/inettuts.js')}"></script>
+
+        
+
+    
+</apex:define>
+</apex:composition>
+</body>
+
+</apex:page>

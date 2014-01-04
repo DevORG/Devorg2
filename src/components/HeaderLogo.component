@@ -1,0 +1,36 @@
+<apex:component id="headerComponent">
+<style>
+#HeaderDiv{
+   width: 1000px;
+   height: 105px;
+      float: left;
+}
+#LogoDiv {
+   
+   width: 261px;
+   height: 56px;
+   float: right;
+   padding-top:10px;
+}
+#NameDiv {
+   width: 380px;
+   height: 39px;
+   float: left;
+   padding-top:25px;
+}
+
+
+
+</style>
+
+ <div id="HeaderDiv">   
+ <div id="LogoDiv">          
+        <apex:image value="{!$Resource.TR_logo}" width="261" height="56" ></apex:image>
+ </div>    
+ <div id="NameDiv">          
+        <apex:image value="{!$Resource.TR_Name}" width="380" height="31" ></apex:image>
+ </div>            
+ </div>    
+  <div class="clear"></div>
+
+</apex:component>

@@ -1,0 +1,28 @@
+<apex:page sidebar="false" showHeader="false" standardStylesheets="false">
+
+<style>
+#containerDiv {
+   width: 1000px;
+   margin: auto;
+}
+
+</style>
+
+<div id="containerDiv">
+ 
+     
+     <apex:insert name="header">
+       <c:HeaderLogo />
+    </apex:insert>
+      
+  
+         <apex:insert name="HomePageContent"/>
+          
+    <apex:insert name="footer">
+  
+    <c:Footer />
+   </apex:insert>
+    
+</div>
+
+</apex:page>

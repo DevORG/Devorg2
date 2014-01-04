@@ -1,0 +1,39 @@
+<apex:page showHeader="true" standardStylesheets="true"  controller="remoteTest">
+  
+    <script
+        src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"
+        type="text/JavaScript" />
+        
+    <script
+        src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.min.js"
+        type="text/JavaScript" />
+        
+        
+    <apex:stylesheet value="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/themes/cupertino/jquery-ui.css"/>
+    
+    
+    <script type="text/JavaScript">
+    var contacts;
+    function contactSearch(name) {
+    remoteTest.findContacts(name,handleContacts);
+    }
+    function handleContacts(result, event) {
+    if(event.type == 'exception') {
+    alert(event.message);
+    } else {
+    contacts = result;
+    showContacts();
+    }
+    }
+    
+    </script>
+    
+    
+    <apex:sectionHeader title="Ajax Client Demo" />
+    <apex:form >
+        <apex:inputText />
+         
+    </apex:form>
+    
+    
+</apex:page>

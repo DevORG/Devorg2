@@ -1,0 +1,31 @@
+<apex:component id="footerComponent">
+ 
+   <style>
+#footerDiv {
+   height: 25px;
+   width: 1000px;
+   
+}
+
+.footer {
+background-color:#BABABA;
+background-image:none;
+
+}
+
+   </style>
+     <div id="footerDiv">
+
+       <apex:toolbar styleclass="footer" >    
+               <apex:outputlabel >@2010 THOMSON REUTERS</apex:outputlabel>           
+            <apex:toolbarGroup itemSeparator="line" location="right" >
+               <apex:outputLink value="http://www.yahoo.com">Privacy Policy</apex:outputLink> 
+               <apex:outputLink >Terms of Use</apex:outputLink>
+               <apex:outputLink value="http://www.google.com">Site Map</apex:outputLink>
+               <apex:outputLink >CopyRight</apex:outputLink>
+            </apex:toolbarGroup>
+        </apex:toolbar>
+    </div>
+
+
+ </apex:component>

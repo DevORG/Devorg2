@@ -1,0 +1,21 @@
+<apex:page Controller="AccountController" action="{!InitalActions}">
+    <apex:form >
+        <apex:pageBlock title="My Content" mode="edit">
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!saveaccount}" value="Save"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="My Content Section" columns="2">
+                <apex:inputField value="{!acc.name}"/>
+                <apex:inputField value="{!acc.site}"/>
+                <apex:inputField value="{!acc.type}"/>
+                <apex:inputField value="{!acc.accountNumber}"/>
+                
+                
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        <apex:commandLink action="{!ShowLogComments}" reRender="LogCommentsPanel"><apex:image url="{!URLFOR($Resource.ALResource, 'AddNotes.png')}" width="25" height="25" /> </apex:commandLink><Br/>
+                <apex:outputPanel id="LogCommentsPanel"  > 
+                <apex:inputField value="{!acc.Comments__c}" rendered="{!IsLogComments}"/>
+                </apex:outputPanel>
+    </apex:form>
+</apex:page>

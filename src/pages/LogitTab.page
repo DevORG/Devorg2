@@ -1,0 +1,31 @@
+<apex:page sidebar="true" showHeader="true" standardStylesheets="true" title="Log It" controller="LogITPageController">
+<style type="text/css">
+.ChartBG{
+background: #555;
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size: 11px;
+line-height: 18px;
+text-align: center;
+color: #333333;
+
+}
+.ChartText{
+font-size: 16px;
+color: #000000;
+font-weight: bold;
+
+}
+ 
+</style> 
+<div class='ChartBG'>
+ <h1 class='ChartText'><br/>Today's Log </h1> <apex:chart height="200" width="350" data="{!ChartData}" resizable="true"  >   
+    
+     <apex:pieSeries dataField="Duration_In_Time__c" labelField="Name" colorSet="#FF6600,#FF9900,#FF7519,#FFA319,#FF8533,#FFAD33,#FF944D,#FFB84D">
+     <apex:chartTips height="40" width="240" valueField="Duration__c"/>
+     </apex:pieSeries>
+             
+</apex:chart>
+</div>
+
+ <iframe style="WIDTH: 100%; HEIGHT:540px" src="/apex/LogitPage?core.apexpages.devmode.url=1&amp;comp=side" frameborder="0" scrolling="no"></iframe> 
+</apex:page>

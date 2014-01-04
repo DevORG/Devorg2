@@ -1,0 +1,3 @@
+<apex:page >
+ <c:LogITComponent />
+</apex:page>

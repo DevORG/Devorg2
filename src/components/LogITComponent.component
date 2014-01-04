@@ -1,0 +1,69 @@
+<apex:component controller="LogITController"  id="LogIdPage" selfClosing="true" access="global" allowDML="true"> 
+ <c:LogITStyles />
+ <body>
+<div id="horizon">        
+<div id="wrap">
+<Table align="center">    
+  <tr>    
+   <div id="contentLogIt">
+    <apex:form id="LogForm" >        
+      <apex:outputText rendered="{!isError}">
+       <div class="alert"><apex:image url="{!URLFOR($Resource.ALResource, 'warningsign.png')}" width="15" height="15" /> {!ErrorMsg} </div>
+      </apex:outputText>
+      <apex:outputPanel id="RecentActivityBlock"  styleClass="RecentActivityStyle">
+      
+        <apex:image url="{!URLFOR($Resource.ALResource, 'Logo2.png')}" width="75" height="75" > 
+          <div id="menuLogIt"> 
+            <div id="TextContainer"> <B>    Recent Activity - </B><br/>
+              <apex:outputText escape="false" value="{!RecentAcitivityDisplay}"></apex:outputText>
+            </div>
+          </div>
+        </apex:image>
+        <apex:outputPanel rendered="{!IsLogDone}">
+         <div id="TextContainer">
+          <apex:outputText escape="false" value="<br/> {!AcitivityDisplay}" ></apex:outputText>
+         </div>
+         <apex:commandLink action="{!ShowLogComments}" >
+         <apex:image url="{!URLFOR($Resource.ALResource, 'AddNotes.png')}" width="35" height="35" /> </apex:commandLink><Br/>
+         <apex:outputPanel id="LogCommentsPanel" >        
+         <apex:inputField value="{!ActivityLog.Notes__c}" styleClass="LoggerCommentsBox" rendered="{!IsLogComments}"/ >  
+         </apex:outputPanel>  
+        </apex:outputPanel>
+      </apex:outputPanel>
+      <br/>
+      <apex:actionRegion > 
+          <apex:outputPanel id="CurrentLog" rendered="{!(IsLogging && IsLogDone == false)}"> 
+              <div id="TextContainer"><B>Activity -</B>
+                  <apex:outputText value=" {!ActivityLog.Name}" rendered="{!IsLogging}"/>
+              </div>  
+              <ul>
+                 <li> <apex:image url="{!URLFOR($Resource.ALResource, 'Loader.gif')}" width="25" height="25"/>  </li>
+                 <ul>
+                  <li> <apex:outputText value="Logging for"  id="LoggedInLable"/> <br/> </li>
+                  <li> <apex:outputText value="{!Logging }" id="LoggedInTime"/> <br/> </li>
+                 </ul>           
+              </ul>
+          </apex:outputPanel>
+          <apex:actionPoller action="{!IncrementTimer}" enabled="{!(IsLogging && IsLogDone == false)}" rerender="LoggedInTime" interval="60"/>   
+      </apex:actionRegion> 
+      <apex:outputPanel Id="LogName"> 
+          <apex:inputField value="{!ActivityLog.Name}" rendered="{!(!IsLogging)}" />
+      </apex:outputPanel>
+      <br/>
+      <div id="ButtonFooter">
+          <apex:commandButton value="Log" title="Log" image="{!URLFOR($Resource.ALResource, 'play-icon.png')}"  style="height:32px;width:32px;" alt="Start" action="{!LogStartTime}"  rendered="{!(!IsLogging  && !IsLogDone ) }" />
+          <apex:commandButton value="Stop" title="Stop" image="{!URLFOR($Resource.ALResource, 'stop-icon.png')}" style="height:32px;width:32px;" action="{!LogStopTime}"  rendered="{!(IsLogging && IsLogDone == false)}"/>
+          <apex:commandButton value="Save" title="Save" image="{!URLFOR($Resource.ALResource, 'check-icon.png')}" style="height:32px;width:32px;" alt="Save" action="{!LogSave}"   rendered="{!IsLogDone}" />
+          <apex:commandButton value="Delete" title="Delete" image="{!URLFOR($Resource.ALResource, 'delete-icon.png')}" style="height:32px;width:32px;" action="{!LogDelete}"   rendered="{!IsLogDone}"/>
+          
+      </div>
+      <!-- <apex:commandLink> <apex:image url="{!URLFOR($Resource.ALResource, 'refresh-icon.png')}" width="15" height="15" /> </apex:commandLink> -->
+    </apex:form>
+    </div>
+  </tr>
+</table>
+</div>
+</div>
+</body>
+ 
+</apex:component>

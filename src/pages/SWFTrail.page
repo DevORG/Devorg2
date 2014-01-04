@@ -1,0 +1,18 @@
+<apex:page >
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+id="Flash" width="100%" height="582"
+codebase="https://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab">
+<param name="movie" value="{!$Resource.SampleSwf}" />
+<param name="quality" value="high" /><param name="play" value="true" />
+<param name="bgcolor" value="#f3f3ec" />
+<param name="allowScriptAccess" value="always" />
+<param name="Wmode" value="transparent" />    
+<param name="flashvars" value=" " />
+<embed src="{!$Resource.SampleSwf}" play="true" bgcolor="#f3f3ec"
+width="100%" height="582" name="FlexSalesforce" align="middle" flashvars=" "
+loop="false" allowScriptAccess="always" type="application/x-shockwave-flash" Wmode="transparent" 
+pluginspage="http://www.adobe.com/go/getflashplayer">
+</embed>
+</object>
+
+</apex:page>

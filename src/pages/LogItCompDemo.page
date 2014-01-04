@@ -1,0 +1,146 @@
+<apex:page showHeader="false" standardStylesheets="false" controller="LogITPageController">
+<style src ="{!URLFOR($Resource.jQueryTimelinr, '/jQueryTimelinr_0953/css/style_v.css')}" ></style>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="{!URLFOR($Resource.jQueryTimelinr, '/jQueryTimelinr_0953/js/jquery.timelinr-0.9.53.js')}" ></script>
+
+<script>
+        $(function(){
+            $().timelinr({
+                orientation:    'vertical',
+                issuesSpeed:    300,
+                datesSpeed:     100,
+                arrowKeys:      'true',
+                startAt:        3
+            })
+        });
+    </script>
+    
+  
+    
+    <div id="timeline">
+        <ul id="dates">
+            <li><a href="#1900" class="selected">1900</a></li>
+            <li><a href="#1930">1930</a></li>
+            <li><a href="#1944">1944</a></li>
+            <li><a href="#1950">1950</a></li>
+            <li><a href="#1971">1971</a></li>
+            <li><a href="#1977">1977</a></li>
+            <li><a href="#1989">1989</a></li>
+            <li><a href="#1999">1999</a></li>
+            <li><a href="#2001">2001</a></li>
+            <li><a href="#2011">2011</a></li>
+        </ul>
+        <ul id="issues">
+            <li id="1900" class="selected">
+                <img src="{!URLFOR($Resource.jQueryTimelinr, '/jQueryTimelinr_0953/images/1.png')}" width="256" height="256" />
+                <h1>1900</h1>
+                <p>Donec semper quam scelerisque tortor dictum gravida. In hac habitasse platea dictumst. Nam pulvinar, odio sed rhoncus suscipit, sem diam ultrices mauris, eu consequat purus metus eu velit. Proin metus odio, aliquam eget molestie nec, gravida ut sapien. Phasellus quis est sed turpis sollicitudin venenatis sed eu odio. Praesent eget neque eu eros interdum malesuada non vel leo. Sed fringilla porta ligula.</p>
+            </li>
+            <li id="1930">
+                <img src="images/2.png" width="256" height="256" />
+                <h1>1930</h1>
+                <p>Donec semper quam scelerisque tortor dictum gravida. In hac habitasse platea dictumst. Nam pulvinar, odio sed rhoncus suscipit, sem diam ultrices mauris, eu consequat purus metus eu velit. Proin metus odio, aliquam eget molestie nec, gravida ut sapien. Phasellus quis est sed turpis sollicitudin venenatis sed eu odio. Praesent eget neque eu eros interdum malesuada non vel leo. Sed fringilla porta ligula.</p>
+            </li>
+            <li id="1944">
+                <img src="images/3.png" width="256" height="256" />
+                <h1>1944</h1>
+                <p>Donec semper quam scelerisque tortor dictum gravida. In hac habitasse platea dictumst. Nam pulvinar, odio sed rhoncus suscipit, sem diam ultrices mauris, eu consequat purus metus eu velit. Proin metus odio, aliquam eget molestie nec, gravida ut sapien. Phasellus quis est sed turpis sollicitudin venenatis sed eu odio. Praesent eget neque eu eros interdum malesuada non vel leo. Sed fringilla porta ligula.</p>
+            </li>
+            <li id="1950">
+                <img src="images/4.png" width="256" height="256" />
+                <h1>1950</h1>
+                <p>Donec semper quam scelerisque tortor dictum gravida. In hac habitasse platea dictumst. Nam pulvinar, odio sed rhoncus suscipit, sem diam ultrices mauris, eu consequat purus metus eu velit. Proin metus odio, aliquam eget molestie nec, gravida ut sapien. Phasellus quis est sed turpis sollicitudin venenatis sed eu odio. Praesent eget neque eu eros interdum malesuada non vel leo. Sed fringilla porta ligula.</p>
+            </li>
+            <li id="1971">
+                <img src="images/5.png" width="256" height="256" />
+                <h1>1971</h1>
+                <p>Donec semper quam scelerisque tortor dictum gravida. In hac habitasse platea dictumst. Nam pulvinar, odio sed rhoncus suscipit, sem diam ultrices mauris, eu consequat purus metus eu velit. Proin metus odio, aliquam eget molestie nec, gravida ut sapien. Phasellus quis est sed turpis sollicitudin venenatis sed eu odio. Praesent eget neque eu eros interdum malesuada non vel leo. Sed fringilla porta ligula.</p>
+            </li>
+            <li id="1977">
+                <img src="images/6.png" width="256" height="256" />
+                <h1>1977</h1>
+                <p>Donec semper quam scelerisque tortor dictum gravida. In hac habitasse platea dictumst. Nam pulvinar, odio sed rhoncus suscipit, sem diam ultrices mauris, eu consequat purus metus eu velit. Proin metus odio, aliquam eget molestie nec, gravida ut sapien. Phasellus quis est sed turpis sollicitudin venenatis sed eu odio. Praesent eget neque eu eros interdum malesuada non vel leo. Sed fringilla porta ligula.</p>
+            </li>
+            <li id="1989">
+                <img src="images/7.png" width="256" height="256" />
+                <h1>1989</h1>
+                <p>Donec semper quam scelerisque tortor dictum gravida. In hac habitasse platea dictumst. Nam pulvinar, odio sed rhoncus suscipit, sem diam ultrices mauris, eu consequat purus metus eu velit. Proin metus odio, aliquam eget molestie nec, gravida ut sapien. Phasellus quis est sed turpis sollicitudin venenatis sed eu odio. Praesent eget neque eu eros interdum malesuada non vel leo. Sed fringilla porta ligula.</p>
+            </li>
+            <li id="1999">
+                <img src="images/8.png" width="256" height="256" />
+                <h1>1999</h1>
+                <p>Donec semper quam scelerisque tortor dictum gravida. In hac habitasse platea dictumst. Nam pulvinar, odio sed rhoncus suscipit, sem diam ultrices mauris, eu consequat purus metus eu velit. Proin metus odio, aliquam eget molestie nec, gravida ut sapien. Phasellus quis est sed turpis sollicitudin venenatis sed eu odio. Praesent eget neque eu eros interdum malesuada non vel leo. Sed fringilla porta ligula.</p>
+            </li>
+            <li id="2001">
+                <img src="images/9.png" width="256" height="256" />
+                <h1>2001</h1>
+                <p>Donec semper quam scelerisque tortor dictum gravida. In hac habitasse platea dictumst. Nam pulvinar, odio sed rhoncus suscipit, sem diam ultrices mauris, eu consequat purus metus eu velit. Proin metus odio, aliquam eget molestie nec, gravida ut sapien. Phasellus quis est sed turpis sollicitudin venenatis sed eu odio. Praesent eget neque eu eros interdum malesuada non vel leo. Sed fringilla porta ligula.</p>
+            </li>
+            <li id="2011">
+                <img src="images/10.png" width="256" height="256" />
+                <h1>2011</h1>
+                <p>Donec semper quam scelerisque tortor dictum gravida. In hac habitasse platea dictumst. Nam pulvinar, odio sed rhoncus suscipit, sem diam ultrices mauris, eu consequat purus metus eu velit. Proin metus odio, aliquam eget molestie nec, gravida ut sapien. Phasellus quis est sed turpis sollicitudin venenatis sed eu odio. Praesent eget neque eu eros interdum malesuada non vel leo. Sed fringilla porta ligula.</p>
+            </li>
+        </ul>
+        <div id="grad_top"></div>
+        <div id="grad_bottom"></div>
+        <a href="#" id="next">+</a>
+        <a href="#" id="prev">-</a>
+    </div>
+ <!-- <h1>Story Points by Status</h1>
+    <apex:chart data="{!StatusViewData}" width="900" height="400">
+        <apex:axis type="Category" position="bottom" fields="status" title="Status"/>
+        <apex:axis type="Numeric" position="left" fields="points" title="Story Points"/>
+        <apex:barSeries axis="left"  orientation="vertical"  xField="status"  yField="points" >
+        <apex:chartTips height="20" width="120"/>
+        </apex:barSeries>
+    </apex:chart>
+    
+    <apex:dataTable value="{!StatusViewData}" var="sta">
+        <apex:column headerValue="Status" value="{!sta.status}"/>
+        <apex:column headerValue="Points" value="{!sta.points}"/>
+    </apex:dataTable>
+   
+
+
+<apex:chart height="400" width="700" data="{!data}">
+     
+    <!-- <apex:axis type="Numeric" position="bottom" fields="Duration_In_Time__c"
+        title="Time (in Hours)"/>
+    <apex:axis type="Category" position="left" fields="Owner.Name"
+        title="Activity"/>
+    <apex:barSeries axis="left"  orientation="horizontal"  yField="Owner.Name"  xField="Duration_In_Time__c" stacked="true">
+        <apex:chartTips height="20" width="120"/>
+         
+    </apex:barSeries> -->
+
+
+
+<ul>
+<li>
+
+ <c:LogITComponent /> 
+ 
+</li>
+
+<li Style="text-align: left;">  <h1>Todays Log Chart</h1> <apex:chart height="200" width="350" data="{!ChartData}" resizable="true"  >   
+    
+     <apex:pieSeries dataField="Duration_In_Time__c" labelField="Name" colorSet="#FF6600,#FF9900,#FF7519,#FFA319,#FF8533,#FFAD33,#FF944D,#FFB84D">
+     <apex:chartTips height="40" width="240" valueField="Duration__c"/>
+     </apex:pieSeries>
+       <!-- <apex:legend position="right"/>-->
+     
+    <!-- <apex:dataTable value="{!data}" var="sta1">
+        <apex:column headerValue="Status" value="{!sta1.Owner.Name}"/>
+        <apex:column headerValue="Points" value="{!sta1.Duration_In_Time__c}"/>
+    </apex:dataTable> -->
+     
+</apex:chart>
+</li>
+
+</ul>  
+
+
+
+
+</apex:page>

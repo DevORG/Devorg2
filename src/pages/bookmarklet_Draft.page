@@ -1,0 +1,469 @@
+<apex:page showHeader="false" sidebar="false"  standardStylesheets="false" >
+<!--
+<a href="javascript:var s = document.createElement('script');s.type='text/javascript';document.body.appendChild(s);s.src='http://nestio.com/bookmarklet.js?'+Math.random();void(0);" > Click </a> <br/>
+<a href="javascript:var s = document.createElement('script');s.type='text/javascript';document.body.appendChild(s);s.src='https://c.ap1.visual.force.com/apex/CS_ShowProductTree?'+Math.random();void(0);" > Click </a>
+-->
+<!--<apex:includeScript value="http://nestio.com/bookmarklet.js"/>  -->
+ 
+
+<div id="kenu-bkmrklt" style="position: absolute; top: 10px; left: 10px; z-index: 999999; background-color: transparent;">
+<style type="text/css">
+#kenu-bkmrklt {
+    float: none;
+    color: #000;
+    font-size: 12px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    text-align: left;
+    text-transform: none;
+}
+
+#kenu-bkmrklt button::-moz-focus-inner { 
+    border: 0;
+    padding: 0;
+}
+
+#kenu-bkmrklt p, 
+#kenu-bkmrklt div,
+#kenu-bkmrklt span {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+}
+
+#kenu-bkmrklt #kenu-bkmrklt-frame {
+    width: 508px;
+    height: 295px;
+    padding: 10px;
+    overflow: hidden;
+    border: 6px solid #000;
+    background-color: #fff;
+}
+
+#kenu-bkmrklt #kenu-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  text-indent: -9999px;
+  background-image: url('http://static.urbanapt.com/img/lightbox_close.png');
+}
+
+#kenu-bkmrklt a.btn, 
+#kenu-bkmrklt button {
+  background: transparent url('http://static.urbanapt.com/img/buttons/button-green-left.png') no-repeat scroll top left;
+  display: block;
+  border: none;
+  float: right;
+  height: 30px;
+  padding: 0 0 0 10px;
+  margin: 0;
+  overflow: hidden;
+  text-decoration: none;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-transition: none ;
+  -moz-transition: none ;
+  -ms-transition: none ;
+  -o-transition: none ;
+  transition: none ;
+}
+
+#kenu-bkmrklt button.disabled {
+  opacity: 0.5;
+}
+
+#kenu-bkmrklt button.disabled span {
+  opacity: 1.0;
+}
+
+#kenu-bkmrklt a.btn span,
+#kenu-bkmrklt button span {
+  float: left;
+  background-image: url('http://static.urbanapt.com/img/buttons/button-green.png');
+  background-repeat: no-repeat;
+  background-position: top right;
+  display: block;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: #fff;
+  text-shadow: rgba(0,0,0,.5) -1px -1px 0px;
+  text-align: left;
+  text-decoration: none;
+  line-height: 30px;
+  padding: 0;
+  margin: 0;
+  padding-right: 10px;
+  white-space: nowrap;
+}
+
+#kenu-bkmrklt a.btn:hover, 
+#kenu-bkmrklt button:hover {
+  background-position: left -30px;
+}
+
+#kenu-bkmrklt a.btn:hover span,
+#kenu-bkmrklt button:hover span {
+  background-position: right -30px;
+}
+
+#kenu-bkmrklt button#kenu-save-btn {
+  padding-left: 35px;
+  background-image: url('http://static.urbanapt.com/img/buttons/button-green-check.png');
+}
+
+#kenu-bkmrklt #kenu-little-logo {
+    margin: 10px 0 7px 0;
+}
+
+#kenu-bkmrklt h3 {
+    margin: 0 0 0 0;
+    padding: 0;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+
+#kenu-bkmrklt .listing {
+    position: relative;
+    border: 1px solid #E5E5E5;
+    border-width: 1px 0;
+    padding: 7px 0;
+    margin: 20px 0 0 0;
+}
+
+#kenu-bkmrklt .login p {
+  margin: 15px 0;
+}
+
+#kenu-bkmrklt .edit {
+    padding-top: 0px;
+}
+
+#kenu-bkmrklt p.edit-text {
+    margin-top: 12px;
+}
+
+#kenu-bkmrklt a.edit-btn {
+  position: absolute;
+  top: -38px;
+  right: 0;
+  padding-left: 35px;
+  background-image: url('http://static.urbanapt.com/img/buttons/button-grey-editlisting.png');
+}
+
+#kenu-bkmrklt a.edit-btn span {
+  background-image: url('http://static.urbanapt.com/img/buttons/button-grey.png');
+}
+
+#kenu-bkmrklt .bottom-bar {
+  margin-top: 8px;
+}
+
+#kenu-bkmrklt .bottom-bar div.contact {
+    float: right;
+    border: 1px solid #d9d9d9;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    padding: 7px;
+    margin-right: 10px;
+    margin-top: -1px;
+    display: none;
+}
+
+#kenu-bkmrklt .bottom-bar div.contact input, 
+#kenu-bkmrklt .bottom-bar div.contact label
+{
+    float: left;
+}
+
+#kenu-bkmrklt .bottom-bar div.contact input
+{
+    margin-top: 1px;
+}
+
+#kenu-bkmrklt .bottom-bar div.contact label
+{
+    margin-left: 8px;
+    font-weight: bold;
+    color: #9b9999;
+    font-size: 11px;
+}
+
+#kenu-bkmrklt .listing .image {
+    position: relative;
+    float: left;
+    width: 60px;
+    height: 45px;
+    border: 1px solid #E5E5E5;
+    padding: 3px;
+    margin-right: 12px;
+}
+
+#kenu-bkmrklt .listing .image .success-check {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 60px;
+  height: 45px;
+  background-image: url('http://static.urbanapt.com/img/bookmarklet/success_check.png'); 
+  background-position: center center;
+}
+
+#kenu-bkmrklt .listing .desc {
+    float: left;
+    width: 224px;
+    padding-top: 10px;
+}
+
+#kenu-bkmrklt .listing .desc .title {
+    display: block;
+    color: #575757;
+    font-weight: bold;
+    font-size: 15px;
+    text-transform: none;
+}
+
+#kenu-bkmrklt .desc .title .unit-number {
+  color:#999999;
+  font-size:11px;
+}
+
+#kenu-bkmrklt .parsed-listing .desc .neighborhood {
+    display: block;
+    color: #888;
+    font-size: 11px;
+}
+
+#kenu-bkmrklt .listing.loading {
+  background:none;
+  border:none;
+  height:45px;
+}
+#kenu-bkmrklt .loading .desc .title {
+    padding-top: 6px;
+    color: #cdcccc;
+}
+
+#kenu-bkmrklt .parsed-listing .layout {
+    float: left;
+    width: 140px;
+    padding-top: 10px;
+    color: #888;
+}
+
+#kenu-bkmrklt .parsed-listing .layout .label {
+  font-size: 11px;
+  color: #888888;
+  font-weight: normal;
+  background: none;
+  text-shadow: none;
+}
+
+#kenu-bkmrklt .parsed-listing .layout .rooms {
+    display: block;
+    background-image: url('http://static.urbanapt.com/img/bedrooms_sm_sprite.png');
+    background-repeat: no-repeat;
+    background-position: top left;
+    width: 0;
+    height: 15px;
+    margin: 0 0 4px;
+}
+
+#kenu-bkmrklt .parsed-listing .layout .room-1 {
+  width: 15px;
+}
+
+#kenu-bkmrklt .parsed-listing .layout .room-2 {
+  width: 33px;
+}
+
+#kenu-bkmrklt .parsed-listing .layout .room-3 {
+  width: 51px;
+}
+
+#kenu-bkmrklt .parsed-listing .layout .room-4 {
+  width: 69px;
+}
+
+#kenu-bkmrklt .parsed-listing .layout .room-5 {
+  width: 87px;
+}
+
+#kenu-bkmrklt .listing .rent {
+    float: left;
+    width: 54px;
+    padding-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: right;
+    color: #575757;
+}
+
+#kenu-bkmrklt .input-wrap {
+    float: left;
+    padding: 5px;
+    margin: 10px 0 0 0;
+    background-color: #e6f2f9;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#kenu-bkmrklt .edit .error {
+  background-color: #ff9999;
+}
+
+#kenu-bkmrklt input {
+  display: block;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+#kenu-bkmrklt input,
+#kenu-bkmrklt select {
+    border: 1px solid #9b9999;
+    background: #fff;
+    font-size: 13px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #000;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    margin: 0;
+    padding: 8px 8px 6px;
+    height: 14px;
+    line-height: 14px;
+}
+
+#kenu-bkmrklt select {
+    height: 26px;
+    padding: 0 0 0 0;
+}
+
+#kenu-bkmrklt #kenu-title-edit {
+    margin-right: 8px;
+}
+
+#kenu-bkmrklt #kenu-title-edit input {
+    /*width: 344px;*/
+    width:260px;
+}
+
+#kenu-bkmrklt #kenu-unit-number-edit {
+    margin-right:8px;
+}
+#kenu-bkmrklt #kenu-unit-number-edit input {
+    padding-left: 23px;
+    background-image: url('http://static.urbanapt.com/img/bookmarklet/input_number_sign.png');
+    background-repeat: no-repeat;
+    background-position: 9px center;
+    width: 45px;
+}
+
+#kenu-bkmrklt #kenu-rent-edit input {
+    padding-left: 23px;
+    background-image: url('http://static.urbanapt.com/img/bookmarklet/input_dollar_sign.png');
+    background-repeat: no-repeat;
+    background-position: 9px center;
+    width: 70px;
+}
+
+#kenu-bkmrklt #kenu-neighborhood-edit {
+    margin-right: 8px;
+}
+
+#kenu-bkmrklt #kenu-neighborhood-edit input {
+    width: 281px;
+    position: relative;/*IE fix*/
+}
+
+#kenu-bkmrklt #kenu-layout-edit select {
+    width: 179px;
+    height: 30px;
+}
+
+#kenu-bkmrklt .autocomplete-menu {
+  list-style-type: none;
+  width: 296px;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  overflow: auto;
+  border: 1px solid #9B9999;
+}
+
+#kenu-bkmrklt .autocomplete-menu li {
+  list-style-type: none;
+  padding: 4px 8px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+#kenu-bkmrklt .autocomplete-menu li.selected {
+  background-color: #E6F2F9;
+}
+
+#kenu-bkmrklt textarea {
+    width: 486px;
+    height: 88px;
+    margin: 9px 0 0;
+    padding: 10px 10px;
+    border: 1px solid #fdcf4d;
+    overflow: hidden;
+    background-color: #fffaec;
+    background-image: none;
+    font-size: 13px;
+    line-height: 20px;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    resize: none;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #575757;
+}
+
+#kenu-bkmrklt #kenu-close-message {
+  display: block;
+  float: right;
+  margin: 10px 0 0 0;
+  font-size: 11px;
+  color: #575757;
+}
+
+#kenu-contact-listing {
+    line-height: 14px;
+}
+
+#kenu-contact-listing label {
+    margin-bottom:0px;
+}
+
+#kenu-contact-listing a.kenu-edit-message {
+    float:left;
+    margin-left: 4px;
+    font-weight: bold;
+    font-size: 11px;
+    color:#007bbb;
+    display: none;
+    background: none;
+    width: inherit;
+    height: inherit;
+    text-indent: 0px;
+}
+</style><a id="kenu-close-btn" href="#">Close</a><div id="kenu-bkmrklt-frame" style="width: 315px; height: 135px;"><img id="kenu-little-logo" alt="Nestio" src="http://static.urbanapt.com/img/bookmarklet/little_logo.png"/>
+<h3 id="kenu-kmrklt-title">Login</h3>
+<div class="listing-content login">
+    <p>Youre silly. You need to login to Nestio first.</p>
+    <a class="btn" onclick="window.open(this.href,'kenuloginwin','location=yes,links=no,scrollbars=no,toolbar=no,width=550,height=550'); return false;" href="http://nestio.com/login/?ui=popup&amp;n=/bookmarklet/loggedin/"><span>Login/Signup</span></a>
+</div></div></div>
+
+
+</apex:page>

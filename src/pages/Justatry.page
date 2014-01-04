@@ -1,0 +1,23 @@
+<apex:page title="Just a Try" sidebar="false" showHeader="false" cache="true" contentType="text/html" id="PageName" name="Justatry__v" 
+setup="true" standardController="Candidate__c"> 
+<apex:form >
+    <apex:pageBlock tabStyle="Candidate__c" rendered="false">
+        <apex:pageblocksection Title="Candidate form">
+           
+                        <apex:inputfield value="{!Candidate__c.First_Name__c}" />
+                        <apex:inputfield value="{!Candidate__c.Last_Name__c}" />
+                        <apex:commandButton action="{!save}"  value="Save" alt="Save1"/>
+            <apex:pageBlockTable value="{!Candidate__c}" var="Info"
+            columns="1">
+            </apex:pageBlockTable>
+        </apex:pageblocksection>
+    </apex:pageBlock>
+</apex:form>
+<!--<apex:page sidebar="false" showHeader="false" renderAs="PDF"> 
+<h1>IRS Mileage Policy</h1>
+<p>The Internal Revenue Service 2008 standard mileage rate is 58.5 cents per mile.
+It is to be used for reimbursement requests for all mileage incurred on or after July 1,
+2008.</p>
+<apex:image id="irs_image"
+value="http://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/IRS.svg/120px-IRS.svg.png"/> -->
+</apex:page>

@@ -1,0 +1,18 @@
+<apex:page standardController="Account" renderAs="PDF" showHeader="false" sidebar="false">
+ <apex:stylesheet value="{!URLFOR($Resource.Sample_UI, 'css/pdf.css')}"/>
+     <table>
+        <thead></thead>
+        <tbody>
+            <tr class="headingRow">
+                <td colspan="2">Request Details</td>
+            </tr>           
+            <tr class="fieldRow">
+            <td class="label">    <apex:outputText >Account Name: </apex:outputText>   </td>
+           <td class="field">    <apex:outputField value="{!Account.Name}"/> </td>
+      </tr>  
+       </tbody>     
+      </Table>
+ 
+ 
+  
+</apex:page>

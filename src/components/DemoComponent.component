@@ -1,0 +1,9 @@
+<apex:component controller="MenuController" selfClosing="true">
+     <apex:stylesheet value="{!URLFOR($Resource.menuStyle, 'menuStyle.css')}"/> 
+    <apex:dataList id="cssdropdown" styleClass="headlink" value="{!topLevelItems}" var="topLevel">
+        <a href="{!topLevel.Action__c}">{!topLevel.Name}</a><br />
+         <apex:dataList value="{!topLevel.Sub_Menu_Items__r}" var="nextLevel">
+            <a href="{!nextLevel.Action__c}">{!nextLevel.Name}</a><br />
+        </apex:dataList>  
+    </apex:dataList>
+</apex:component>

@@ -1,0 +1,494 @@
+<apex:page showheader="false" sidebar="false" standardController="Account">
+
+<style>
+
+#containerDiv {
+
+   width: 1000px;
+
+   margin: auto;
+
+}
+
+#
+Div {
+
+   width: 1000px;
+
+   height: 105px;
+
+   #background: grey;
+
+   float: left;
+
+}
+
+ 
+
+#navigationDiv {
+
+   height: 460px;
+
+   width: 598px;
+
+   #background: green;
+
+   float: left;
+
+   border-style:none;
+
+    border-width:1px;
+
+ 
+
+}
+
+#contentDiv {
+
+   width: 398px;
+
+   height: 460px;
+
+  # background: yellow;
+
+   float: left;
+
+   border-style:none;
+
+border-width:1px;
+
+ 
+
+}
+
+#footerDiv {
+
+   height: 25px;
+
+   width: 1000px;
+
+  #  background: yellow;
+
+   
+
+}
+
+#crumpDiv{
+
+   width: 1000px;
+
+   height: 25px;  
+
+   float: left;
+
+}
+
+.tbar {
+
+background-color:grey;
+
+background-image:none;
+
+}
+
+.Extra{
+
+background-color:green;
+
+background-image:none;
+
+}
+
+.panelgroups{
+
+width: 300px;
+
+
+}
+
+.homelinks{
+
+font-weight:bold;
+
+}
+
+.MoreBar{
+
+background-color:grey;
+
+background-image:none;
+
+}
+
+        
+
+</style>
+
+ 
+
+<div id="containerDiv">
+
+    <div id="logoDiv">
+
+       
+
+        <!-- <apex:image value="{!$Resource.MyTR_logo}" width="1000" height="75" ></apex:image> -->
+
+        <apex:toolbar height="30px" styleclass="tbar">
+
+            <apex:outputLink >MENU</apex:outputLink>
+
+            <apex:toolbarGroup itemSeparator="line" style="tbar">
+
+               <apex:outputLink >MY PROFILE</apex:outputLink> 
+
+            </apex:toolbarGroup>
+
+        </apex:toolbar>
+
+    </div>    
+
+    <div class="clear"></div>
+
+    
+
+    <div id = "crumpDiv"><apex:outputLabel style="color:blue;padding-top = 10px">Home</apex:outputLabel></div>
+
+    <div class="clear"></div>
+
+    
+
+    <div id="navigationDiv">
+
+         
+
+        <apex:pageblock >
+
+            <apex:pageBlockSection title="LINKS TO OTHER RESOURCES" columns="2">
+
+            <apex:facet name="header">
+
+            </apex:facet>
+
+            <apex:facet name="body">
+
+            <apex:outputPanel >
+
+                <table width = "550px" align = "left">
+
+                    <tr align = "left" >
+
+                        <td align = "left" width ="250px"><apex:outputLink value="http://salesforce.com" styleClass="homelinks" style="color:blue">Online Software Downloads</apex:outputLink></td>                   
+
+                          <td rowspan = "6">
+                          <!-- <apex:image value="{!$Resource.Eikon_Image}" width="250" height="150" ></apex:image> --></td>
+
+                    </tr>
+
+                    <tr >
+
+                        <td width ="250px"> <apex:outputlabel > Access downloads for software updates and patches for products and data</apex:outputlabel></td>                       
+
+                    </tr>
+
+                    <tr>
+
+                        <td  width ="250px"> <apex:outputLink value="http://salesforce.com" styleClass="homelinks" style="color:blue">Product Support (Customer Zone)</apex:outputLink> </td>                   
+
+                    </tr>
+
+                    <tr >
+
+                        <td width ="250px" >
+
+                        <apex:outputText > Support information including user guides, product enhancements and technical documentation for desktop products</apex:outputText>
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td  width ="250px"> <apex:outputLink value="http://salesforce.com" styleClass="homelinks" style="color:blue">FID Lookup (Customer Zone)</apex:outputLink> </td>                   
+
+                    </tr>
+
+                    <tr >
+
+                        <td width ="250px" >
+
+                         <apex:outputText > Lorem ipsum dolar sita met consectetur, abdispicing eit, sed diyum nonummy</apex:outputText>
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td  width ="250px"> <apex:outputLink value="http://salesforce.com" styleClass="homelinks" style="color:blue">Knowledge Base (Customer Zone)</apex:outputLink> </td>                   
+
+                         <td  width ="250px"> <apex:outputLink value="http://salesforce.com" styleClass="homelinks" style="color:blue">Technical Information Pages</apex:outputLink> </td>                   
+
+                    </tr>
+
+                    <tr >
+
+                        <td width ="250px" ><apex:outputText > Lorem ipsum dolar sita met consectetur, abdispicing eit, sed diyum nonummy</apex:outputText></td>
+
+                        <td width ="250px" ><apex:outputText > Lorem ipsum dolar sita met consectetur, abdispicing eit, sed diyum nonummy</apex:outputText></td>
+
+                        </tr>
+
+                    <tr>
+
+                        <td  width ="250px"> <apex:outputLink value="http://salesforce.com" styleClass="homelinks" style="color:blue">Training (Knowledge Network)</apex:outputLink> </td>                   
+
+                        <td width ="250px"><apex:outputLink value="http://salesforce.com" styleClass="homelinks" style="color:blue">Thomson One Self-Entitlement Application</apex:outputLink></td>
+
+                    </tr>
+
+                    <tr >
+
+                        <td width ="250px" ><apex:outputText > Lorem ipsum dolar sita met consectetur, abdispicing eit, sed diyum nonummy</apex:outputText> </td>                        
+
+                         <td width ="250px" ><apex:outputText > Lorem ipsum dolar sita met consectetur, abdispicing eit, sed diyum nonummy</apex:outputText> </td>                        
+
+                    </tr>
+
+                    <tr>
+
+                        <td  width ="250px"> <apex:outputLink value="http://salesforce.com" styleClass="homelinks" style="color:blue">Invoicing platform</apex:outputLink> </td>                   
+
+                        <td width ="250px"><apex:outputLink value="http://salesforce.com" styleClass="homelinks" style="color:blue">Thomson Reuters Eikon Administration Services</apex:outputLink></td>
+
+                    </tr>
+
+                    <tr >
+
+                        <td width ="250px" ><apex:outputText > Lorem ipsum dolar sita met consectetur, abdispicing eit, sed diyum nonummy</apex:outputText></td>
+
+                        <td width ="250px" ><apex:outputText > Lorem ipsum dolar sita met consectetur, abdispicing eit, sed diyum nonummy</apex:outputText></td>                  
+
+                    </tr>
+
+                </table>
+
+             </apex:outputPanel>
+
+             </apex:facet>
+
+            </apex:pageBlockSection>
+
+        </apex:pageblock>
+
+    </div>
+
+    <div id="contentDiv">
+
+       <apex:pageblock >
+
+            <apex:pageBlockSection title="TODAY'S RIC CHANGE EVENTS" columns="1">
+
+              <apex:outputpanel >
+
+            <table width = "300px" align = "left">
+
+                <tr >
+
+                    <td align = "left" width = "30px">RIC Number</td>
+
+                    <td align = "right" width = "180px">Product</td>
+
+                    <td align = "right" width = "120px">Action</td>
+
+                </tr>
+
+                <tr>
+
+                    <td align = "left" width = "30px">3044</td>
+
+                    <td align = "left" width = "180px">Thomson Reuters Data Feed Direct</td>
+
+                    <td align = "left" width = "120px">For Information</td>
+
+                </tr>
+
+                <tr>
+
+                    <td align = "left" width = "30px">3030</td>
+
+                    <td align = "left" width = "180px">reuters DataScope for Equiters</td>
+
+                    <td align = "left" width = "120px">For Action</td>
+
+                </tr>
+
+                <tr>
+
+                    <td align = "left" width = "30px">3052</td>
+
+                    <td align = "left" width = "180px">Thomson Reuters Dealing</td>
+
+                    <td align = "left" width = "120px">For Information</td>
+
+                </tr>
+
+            </table>
+
+            <apex:toolbar styleClass="MoreBar" >
+
+                <apex:outputLabel >More(4)></apex:outputLabel>
+
+            </apex:toolbar>
+
+            </apex:outputpanel>              
+
+            </apex:pageBlockSection>
+
+            <apex:pageBlockSection title="TODAY'S DATA NOTIFICATIONS">
+
+                <apex:outputpanel >
+
+            <table width = "300px" align = "left">
+
+                <tr >
+
+                    <td align = "left" width = "30px">DN Number</td>
+
+                    <td align = "right" width = "180px">Product</td>
+
+                    <td align = "right" width = "120px">Action</td>
+
+                </tr>
+
+                <tr>
+
+                    <td align = "left" width = "30px">3044</td>
+
+                    <td align = "left" width = "180px">Thomson Reuters Data Feed Direct</td>
+
+                    <td align = "left" width = "120px">For Information</td>
+
+                </tr>
+
+                <tr>
+
+                    <td align = "left" width = "30px">3030</td>
+
+                    <td align = "left" width = "180px">reuters DataScope for Equiters</td>
+
+                    <td align = "left" width = "120px">For Action</td>
+
+                </tr>
+
+                <tr>
+
+                    <td align = "left" width = "30px">3052</td>
+
+                    <td align = "left" width = "180px">Thomson Reuters Dealing</td>
+
+                    <td align = "left" width = "120px">For Information</td>
+
+                </tr>
+
+            </table>
+
+            <apex:toolbar styleClass="MoreBar" >
+
+                <apex:outputLabel >More(4)></apex:outputLabel>
+
+            </apex:toolbar>
+
+            </apex:outputpanel>   
+
+            </apex:pageBlockSection>
+
+            <apex:pageBlockSection title="TODAY'S PRODUCT CHANGE NOTIFICATIONS" columns="1">
+
+            <apex:outputpanel >
+
+            <table width = "300px" align = "left">
+
+                <tr >
+
+                    <td align = "left" width = "30px">PCN Number</td>
+
+                    <td align = "right" width = "180px">Product</td>
+
+                    <td align = "right" width = "120px">Action</td>
+
+                </tr>
+
+                <tr>
+
+                    <td align = "left" width = "30px">3044</td>
+
+                    <td align = "left" width = "180px">Thomson Reuters Data Feed Direct</td>
+
+                    <td align = "left" width = "120px">For Information</td>
+
+                </tr>
+
+                <tr>
+
+                    <td align = "left" width = "30px">3030</td>
+
+                    <td align = "left" width = "180px">reuters DataScope for Equiters</td>
+
+                    <td align = "left" width = "120px">For Action</td>
+
+                </tr>
+
+                <tr>
+
+                    <td align = "left" width = "30px">3052</td>
+
+                    <td align = "left" width = "180px">Thomson Reuters Dealing</td>
+
+                    <td align = "left" width = "120px">For Information</td>
+
+                </tr>
+
+            </table>
+
+            <apex:toolbar styleClass="MoreBar" >
+
+                <apex:outputLabel >More(4)></apex:outputLabel>
+
+            </apex:toolbar>
+
+            </apex:outputpanel>              
+
+            </apex:pageBlockSection>
+
+        </apex:pageblock>
+
+    </div>
+
+    <div class="clear"></div>
+
+    <div id="footerDiv">
+
+       <apex:toolbar styleclass="tbar" >  
+
+              <apex:outputlabel >@2010 THOMSON REUTERS</apex:outputlabel>          
+
+            <apex:toolbarGroup itemSeparator="line" location="right" style="tbar" >
+
+               <apex:outputLink >Privacy Policy</apex:outputLink> 
+
+               <apex:outputLink >Terms of Use</apex:outputLink>
+
+               <apex:outputLink >Site Map</apex:outputLink>
+
+               <apex:outputLink >CopyRight</apex:outputLink>
+
+            </apex:toolbarGroup>
+
+        </apex:toolbar>
+
+    </div>
+
+</div>
+
+</apex:page>

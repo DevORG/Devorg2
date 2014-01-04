@@ -1,0 +1,474 @@
+<apex:page showHeader="false" id="CustomAccount" Controller="ESEPocAccountExtController" cache="false">
+<style>
+fieldSet.TRPanel {
+border-color:#FF9900;
+border-width:2px;
+border-style:solid;
+
+}
+legend.TRFont 
+{
+  color:#FF9900;
+  font-family:calibri;
+  
+}
+.font{
+font-family:calibri;
+} 
+
+.detailsLable{
+    font-family:calibri;
+    font-size:15px;
+    font-weight:bold;
+}
+
+.detailsContent{
+    font-familycalibri;
+    font-size:13px;
+}
+
+#columns .columnsStaticA{
+    float: left;
+    width: 20%;
+        /* Min-height: */
+        min-height: 25px;
+         height: auto !important; 
+        height: 400px;
+        margin: 0px 10px 5px 0px;
+        padding: 1px;
+}
+#columns .columnsStaticB{
+    float: left;
+    width: 60%;
+        /* Min-height: */
+        min-height: 25px;
+          height: auto !important; 
+        height: 400px;
+        margin: 0px 10px 5px 0px;
+}
+#columns .columnsStaticC{
+    float: left;
+    width: 17%;
+        /* Min-height: */
+        min-height: 25px;
+         height: auto !important; 
+        height: 400px;
+        
+        padding: 1px;
+} 
+
+#colleft   { width:175px; margin-top:10px; float:right; overflow:hidden;}
+#showPanel { position:inherit; z-index:2; left:0; float:left; padding-top:40px; display:none; width:0px; height:100px; cursor:pointer;}
+#showPanel span{display:block; font-size:24px; height:30px; margin-top:20px; padding:10px 0 10px 10px; width:20px; background: #333;}
+#colright { padding-top:10px; color:#1c1c1c; margin-left:200px; }
+
+</style>
+  <script type="text/javascript" src="http://jqueryjs.googlecode.com/files/jquery-1.2.6.min.js"> </script>
+
+   <script type="text/javascript" src="{!URLFOR($Resource.Source, 'source/jquery-ui-personalized-1.6rc2.min.js')}"></script>
+ 
+<script type="text/javascript">
+         var remember=0
+        function showAdditionalInformation(a) {
+            //alert(a)      
+                // alert('clickedRow: ' + document.getElementById('mydata').rows.length);
+               // getAccDetails(a);
+
+        }
+        function changeRowColor(tablerow){
+            //alert(tablerow.rowIndex);
+             tbl = document.getElementById('CustomAccount:j_id1:myfrm:mydata');
+            
+            if(remember!= 0){                     
+                tbl.rows[remember].style.backgroundColor='white';    
+            }
+            remember= tablerow.rowIndex;          
+            tablerow.style.backgroundColor='#FF9900';
+        }
+        
+        function clearform(){
+            var insertflag = document.getElementById('CustomAccount:j_id1:accountfrm:insertflag').value;
+            if(insertflag == 'true'){            
+            document.getElementById('CustomAccount:j_id1:accountfrm').reset();}
+        }
+                           
+                           var j$ = jQuery.noConflict();
+  
+//Included for Slied effort
+jQuery(document).ready(function(){
+ j$("#hidePanel").click(function(){
+ j$("#panel").animate({marginLeft:"-175px"}, 500 );
+ j$("#colleft").animate({width:"0px", opacity:0}, 400 );
+ j$("#showPanel").show("normal").animate({width:"28px", opacity:1}, 200);
+ j$("#colright").animate({marginLeft:"50px"}, 500);
+ });
+ j$("#showPanel").click(function(){
+ j$("#colright").animate({marginLeft:"200px"}, 200);
+ j$("#panel").animate({marginLeft:"0px"}, 400 );
+ j$("#colleft").animate({width:"175px", opacity:1}, 400 );
+ j$("#showPanel").animate({width:"0px", opacity:0}, 600).hide("slow");
+ });
+});
+
+</script>
+<apex:composition template="HomePageTemplate">
+
+
+<apex:define name="HomePageContent">
+ <br></br> <Br/> 
+<font size="5">New Account</font><br></br> <Br/>  <Br/> 
+<apex:pageMessages id="message"></apex:pageMessages>
+
+ <div id="columns">
+        
+        <div  class="columnsStaticA">
+        <fieldSet  class="TRPanel"> 
+              <table>
+              <tr> 
+                  <td>
+                 
+                       <apex:outputLabel style="font-size:17px" styleClass="font">User Management </apex:outputLabel> 
+                  </td>
+              </tr>
+                <tr> 
+                   <td>
+                      <apex:outputLink styleClass="font" value="/apex/ESEPocCustomNewAccountPage?core.apexpages.devmode.url=1">Create Acount (Custom) </apex:outputLink>
+                  </td> 
+               </tr>
+               <tr> 
+                   <td>
+                      <apex:outputLink value="/apex/ESEPocStandardNewAccountPage?core.apexpages.devmode.url=1" styleClass="font">Create Acount (Standard) </apex:outputLink>
+                  </td>
+               </tr>
+               <tr> 
+                   <td>
+                      <apex:outputLink styleClass="font">Create User</apex:outputLink>
+                  </td>
+               </tr>
+               <tr> 
+                   <td>
+                      <apex:outputLink styleClass="font">Delete User</apex:outputLink>
+                  </td>
+               </tr>
+               <tr> 
+                   <td>
+                      <apex:outputLink styleClass="font">Swap User</apex:outputLink>
+                  </td>
+               </tr>
+               <tr> 
+                   <td>
+                      <apex:outputLink styleClass="font">Clone User</apex:outputLink>
+                  </td>
+               </tr>
+               <tr> 
+                   <td>
+                      <apex:outputLink styleClass="font">Add Service To User</apex:outputLink>
+                  </td>
+               </tr>
+               <tr> 
+                   <td>
+                      <apex:outputLink styleClass="font">Cancel Service From User</apex:outputLink>
+                  </td>
+               </tr>
+               <tr> 
+                   <td>
+                      <apex:outputLink styleClass="font">Product Catalogue</apex:outputLink>
+                  </td>
+               </tr>
+               <tr> 
+                   <td>
+                      <apex:outputLink styleClass="font">Group Management</apex:outputLink>
+                  </td>
+               </tr>
+               <tr> 
+                   <td>
+                      <apex:outputLink styleClass="font">Add Service</apex:outputLink>
+                  </td>
+               </tr>
+               <tr> 
+                   <td>
+                      <apex:outputLink styleClass="font">Cancel Service</apex:outputLink>
+                  </td>
+               </tr>
+               <tr> 
+                   <td>
+                      <apex:outputLink styleClass="font">Product Code Lookup</apex:outputLink>
+                  </td>
+               </tr>
+                <tr> 
+                  <td>
+                 
+                       <Br/> 
+                  </td>
+              </tr>
+                <tr> 
+                  <td>
+                 
+                       <apex:outputLabel style="font-size:17px" styleClass="font">Contact Us</apex:outputLabel> 
+                  </td>
+              </tr>
+              </table>
+         </fieldset>
+            
+        </div>
+         <div  class="columnsStaticB">
+         <apex:form id="accountfrm">
+         <fieldSet  class="TRPanel"> 
+              <legend class="TRFont">Account Name </legend>
+               
+              <table width="100%">
+              <tr>
+                <td align="right"  style="padding-top:1%" width="25%">
+                                          <apex:outputLabel value="Account Name" styleClass="font"/><apex:outputLabel value="*" style="color:#FF9933" styleClass="font"/>
+                                       </td>
+                                       <td align="Left"  style="padding-top:1%" width="40%">
+                                          <apex:inputField value="{!acct.Name}"/> 
+                                       </td>
+               </tr>
+              </table>
+               
+         </fieldset>
+         <br/>
+          
+    <fieldSet  class="TRPanel"> 
+              <legend class="TRFont">Account Information</legend>
+               
+              <table width="100%">
+              <tr>
+                <td align="right"  style="padding-top:1%" width="20%">
+                                          <apex:outputLabel value="Account Number" styleClass="font"/> 
+                                       </td>
+                                       <td align="Left"  style="padding-top:1%" width="30%">
+                                          <apex:inputField value="{!acct.AccountNumber}"  style="width:90%;"/> 
+                                       </td>
+                                       <td align="right"  style="padding-top:1%" width="20%">
+                                          <apex:outputLabel value="Phone" styleClass="font"/> 
+                                       </td>
+                                       <td align="Left"  style="padding-top:1%" width="30%">
+                                          <apex:inputText value="{!acct.Phone}"  style="width:90%;"/>
+                                       </td>
+               </tr>
+                <tr>
+                <td align="right"  style="padding-top:1%" width="20%">
+                                          <apex:outputLabel value="Industry" styleClass="font"/> 
+                                       </td>
+                                       <td align="Left"  style="padding-top:1%" width="30%">
+                                          <apex:inputField value="{!acct.Industry}"  style="width:90%;"/>
+                                       </td>
+                                       <td align="right"  style="padding-top:1%" width="20%">
+                                          <apex:outputLabel value="Description" styleClass="font"/> 
+                                       </td>
+                                       <td align="Left"  style="padding-top:1%" width="30%">
+                                          <apex:inputField value="{!acct.Description}" style="width:90%;"/>
+                                       </td>
+               </tr>
+               <tr>
+                <td align="right"  style="padding-top:1%" width="20%">
+                                          <apex:outputLabel value="Fax" styleClass="font"/> 
+                                       </td>
+                                       <td align="Left"  style="padding-top:1%" width="30%">
+                                          <apex:inputField value="{!acct.Fax}"  style="width:90%;"/>
+                                       </td>
+                                       <td align="right"  style="padding-top:1%" width="20%">
+                                          <apex:outputLabel value="Parent Account" styleClass="font"/> 
+                                       </td>
+                                       <td align="Left"  style="padding-top:1%" width="30%">
+                                          <apex:inputField value="{!acct.ParentId}"  style="width:80%;"/>
+                                       </td>
+               </tr>
+                   <tr>
+                <td align="right"  style="padding-top:1%" width="20%">
+                                          <apex:outputLabel value="Rating" styleClass="font"/> 
+                                       </td>
+                                       <td align="Left"  style="padding-top:1%" width="30%">
+                                          <apex:inputField value="{!acct.Rating}"  style="width:90%;"/> 
+                                       </td>
+                                       <td align="right"  style="padding-top:1%" width="20%">
+                                          <apex:outputLabel value="SIC Code" styleClass="font"/> 
+                                       </td>
+                                       <td align="Left"  style="padding-top:1%" width="30%">
+                                          <apex:inputField value="{!acct.Sic}"  style="width:90%;"/>
+                                       </td>
+               </tr>
+    <tr>
+                <td align="right"  style="padding-top:1%" width="20%">
+                                          <apex:outputLabel value="Ticker Symbol" styleClass="font"/> 
+                                       </td>
+                                       <td align="Left"  style="padding-top:1%" width="30%">
+                                          <apex:inputField value="{!acct.TickerSymbol}"  style="width:90%;"/>
+                                       </td>
+                                       <td align="right"  style="padding-top:1%" width="20%">
+                                          <apex:outputLabel value="Account Type" styleClass="font"/> 
+                                       </td>
+                                       <td align="Left"  style="padding-top:1%" width="30%">
+                                          <apex:inputField value="{!acct.Type}"  style="width:90%;"/>
+                                       </td>
+               </tr>
+    <tr>
+                <td align="right"  style="padding-top:1%" width="20%">
+                                          <apex:outputLabel value="WebSite" styleClass="font"/> 
+                                       </td>
+                                       <td align="Left"  style="padding-top:1%" width="30%">
+                                          <apex:inputField value="{!acct.website}"  style="width:90%;"/>
+                                       </td>
+                                       
+               </tr>
+
+              </table>
+             
+         </fieldset>
+         <table width="100%">
+         <tr>
+         <td colspan="3" align="right" style="padding:1% 1% 1% 0;">
+         <apex:inputhidden value="{!insertflag}" id="insertflag" />
+         <div id="showPanel"><a href="#">&laquo; Show Panel</a></div>
+             <apex:commandButton value="Create Account" action="{!SaveExt}" reRender="mydata,insertflag,message" styleClass="font" oncomplete="clearform()"/>
+     
+   </td>
+         </tr>
+     </table>
+     </apex:form> 
+     
+         <br/>
+         <apex:form >
+<apex:actionFunction name="getAccDetails" action="{!getAccountDetails}"  rerender="AddiontalInfo">
+     
+    <apex:param name="AccSelId" assignTo="{!SelectedAccId }"  value="" /> 
+</apex:actionFunction>
+
+</apex:form>
+  <fieldSet  class="TRPanel" id="MyfieldSet">
+                           <legend class="TRFont">Recently Added Accounts</legend>
+<apex:form id="myfrm">
+<apex:dataTable value="{!accounts}" var="a" id="mydata" columnswidth="10%,20%,20%,15%,20%,20%" width="100%" cellpadding="6" border="0" styleClass="font" style="border-width: 1px;" onrowclick="changeRowColor(this)">
+
+<apex:column headervalue="Remove" style="border-width: 1px;">
+
+<apex:commandLink action="{!getSelectedDemo}" >  
+ <apex:param name="parame" assignTo="{!SelectedAcc}"  value="{!a.acc.Id}"/>
+ <apex:image url="{!URLFOR($Resource.DeleteIcon)}" height="20" width="20"/>
+ </apex:commandLink>
+  
+ 
+</apex:column>
+    
+<apex:column headervalue="Acount Name" value="{!a.acc.Name}" onclick="getAccDetails('{!a.acc.Id}')" styleClass="font"/>
+<apex:column headervalue="Account Number"  value="{!a.acc.AccountNumber}" onclick="getAccDetails('{!a.acc.Id}')" styleClass="font"/>
+<apex:column headervalue="Phone" value="{!a.acc.Phone}" onclick="getAccDetails('{!a.acc.Id}')" styleClass="font"/>
+<apex:column headervalue="Fax" value="{!a.acc.Fax}" onclick="getAccDetails('{!a.acc.Id}')" styleClass="font"/>
+<apex:column headervalue="Industry " value="{!a.acc.Industry }" onclick="getAccDetails('{!a.acc.Id}')" styleClass="font" />
+
+</apex:dataTable>
+
+</apex:form>
+</fieldSet>
+
+<br/>
+<br/>
+<br/>
+</div>
+<div  class="columnsStaticC">
+ 
+<apex:outputPanel id="AddiontalInfo"> 
+<apex:outputPanel rendered="{!showPanel}">
+
+         <fieldSet  class="TRPanel"> 
+              <legend class="TRFont">Additional Information</legend>
+              <apex:dataTable value="{!SelectAccount}" var="displayAccount" id="theList" rowClasses="font,details">
+                          <apex:column >
+                          
+                        <Table  width="100%">
+                        <tr>
+                             <td>
+                                <apex:outputtext styleClass="detailsLable" value="Account name" /> 
+                                </td>
+                          </tr>
+                          <tr>
+                              <td>
+                                <apex:outputText styleClass="detailsContent" value="{!displayAccount.name}"/>
+                                </td>
+                        </tr>
+                        <br/>
+                           <tr>
+                             <td>
+                                <apex:outputtext styleClass="detailsLable" value="Account number" /> 
+                                </td>
+                          </tr>
+                          <tr>
+                              <td>
+                                <apex:outputText styleClass="detailsContent" value="{!displayAccount.AccountNumber }"/>
+                                </td>
+                        </tr>
+                        <br/>
+                           <tr>
+                             <td>
+                                <apex:outputtext styleClass="detailsLable" value="Account Industry" /> 
+                                </td>
+                          </tr>
+                          <tr>
+                              <td>
+                                       <apex:outputText styleClass="detailsContent" value="{!displayAccount.Industry}"/>
+                                </td>
+                        </tr>
+                        <br/>
+                           <tr>
+                             <td>
+                                <apex:outputtext styleClass="detailsLable" value="Account Fax" /> 
+                                </td>
+                          </tr>
+                          <tr>
+                              <td>
+                                <apex:outputText styleClass="detailsContent" value="{!displayAccount.fax}"/>
+                                </td>
+                        </tr>
+                        <br/>
+                           <tr>
+                             <td>
+                                <apex:outputtext styleClass="detailsLable" value="Account Created On" /> 
+                                </td>
+                          </tr>
+                          <tr>
+                              <td>
+                                <apex:outputText styleClass="detailsContent" value="{!displayAccount.CreatedDate}"/>
+                                </td>
+                        </tr>
+                         
+                        <br/>
+                        
+                        
+                    </Table>
+                 </apex:column>
+                 <apex:column >    
+ 
+  <div id="colleft">
+
+<div id="panel">
+<h1>My Panel</h1>
+<ul>
+    <li>item #1</li>
+    <li>item #2</li>
+    <li>item #3</li>
+    <li>item #4</li>
+</ul>
+<div id="hidePanel"><a href="#">&laquo; Hide Panel</a></div>
+</div>
+</div>
+                </apex:column>
+
+                 
+              </apex:dataTable>
+              
+              
+         </fieldSet>
+
+       </apex:outputPanel>  
+    </apex:outputPanel>
+ 
+</div>
+</div>
+
+                        
+      </apex:define>
+
+</apex:composition> 
+</apex:page>

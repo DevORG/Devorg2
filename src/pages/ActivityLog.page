@@ -1,0 +1,135 @@
+<apex:page standardController="Activity_Logs__c" extensions="ActivityLogExt" action="{!InitalActions}">
+
+  <!-- Begin Default Content REMOVE THIS 
+      Auto complete
+      Get the latest by asec
+  -->
+  <!-- Style-->
+  <style type="text/css">
+
+.LoggerButtonStyle{
+border:0px solid #bee1fa; -webkit-border-radius: 12px; -moz-border-radius: 12px;border-radius: 12px;font-family:verdana, sans-serif; padding: 10px 10px 10px 10px; text-shadow: 1px 1px 0 rgba(161,161,161,0.3);font-weight:bold; text-align: center; color: #4A4A4A; background-color: #f2f9fe;
+ background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f2f9fe), color-stop(100%, #d6f0fd));
+ background-image: -webkit-linear-gradient(top, #f2f9fe, #d6f0fd);
+ background-image: -moz-linear-gradient(top, #f2f9fe, #d6f0fd);
+ background-image: -ms-linear-gradient(top, #f2f9fe, #d6f0fd);
+ background-image: -o-linear-gradient(top, #f2f9fe, #d6f0fd);
+ background-image: linear-gradient(top, #f2f9fe, #d6f0fd);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#f2f9fe, endColorstr=#d6f0fd);
+}
+
+.LoggerButtonStyle:hover{
+ border:0px solid #93cdf7; background-color: #c3e3fa;
+ background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c3e3fa), color-stop(100%, #a5defb));
+ background-image: -webkit-linear-gradient(top, #c3e3fa, #a5defb);
+ background-image: -moz-linear-gradient(top, #c3e3fa, #a5defb);
+ background-image: -ms-linear-gradient(top, #c3e3fa, #a5defb);
+ background-image: -o-linear-gradient(top, #c3e3fa, #a5defb);
+ background-image: linear-gradient(top, #c3e3fa, #a5defb);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#c3e3fa, endColorstr=#a5defb);
+}
+
+ 
+.LoggerCommentsBox{ border:solid 2px #f7883e; 
+            text-align:center; 
+            background:#FFFFFF; 
+            padding:10px 5px 10px 5px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border-radius: 8px;
+            -moz-box-shadow: 10px  10px  32px  #000000;
+          -webkit-box-shadow: 10px  10px  32px  #000000;
+          box-shadow: 10px  10px  32px  #000000;
+            }
+Table.HeaderStyle tr{
+//font:bold 32px Arial, Monaco, monospace;
+font-style:normal;
+color:#000000;
+background:#f4970c;
+border:6px none #1c0401;
+text-shadow:0px 0px 0px #222222;
+box-shadow:1px -1px 9px #000000;
+-moz-box-shadow:1px -1px 9px #000000;
+-webkit-box-shadow:1px -1px 9px #000000;
+border-radius:90px 90px 0px 0px;
+-moz-border-radius:90px 90px 0px 0px;
+-webkit-border-radius:90px 90px 0px 0px;
+width:86px;
+padding:5px 90px;
+
+margin:0 auto;
+}
+ 
+Table.RecentActivityStyle tr{
+
+font-style:normal;
+color:#140f0e;
+background:#C2BDB6;
+border:6px none #1c0401;
+text-shadow:0px 0px 0px #222222;
+box-shadow:1px -1px 9px #000000;
+-moz-box-shadow:1px -1px 9px #000000;
+-webkit-box-shadow:1px -1px 9px #000000;
+border-radius:0px 0px 90px 90px;
+-moz-border-radius:0px 0px 90px 90px;
+-webkit-border-radius:0px 0px 90px 90px;
+width:86px;
+padding:5px 90px;
+
+margin:0 auto;
+}
+ 
+
+
+</style>
+<Table >
+    <tr class="HeaderStyle">
+  <br/>
+  <h1 > Log It </h1> 
+  <br/> 
+  <br/>
+  </tr>
+  <tr class="RecentActivityStyle"> 
+  
+  <apex:form id="LogForm">
+      <!--<apex:outputText value="Your Time Goes Here>> {!CurrentTime}" id="CurentTime"/> <br/>-->
+      <apex:outputPanel id="RecentActivityBlock"  styleClass="RecentActivityStyle"> Recent Activity - 
+      <apex:outputText escape="false" value="{!RecentAcitivityDisplay}"></apex:outputText>
+      <apex:outputPanel rendered="{!IsLogDone}">
+      <apex:outputText escape="false" value="<br/> {!AcitivityDisplay}" ></apex:outputText>
+      <apex:commandLink action="{!ShowLogComments}" reRender="LogCommentsPanel"><apex:image url="{!URLFOR($Resource.ALResource, 'AddNotes.png')}" width="25" height="25" /> </apex:commandLink><Br/>
+      <apex:outputPanel id="LogCommentsPanel" ><Br/>
+       <apex:inputField styleClass="LoggerCommentsBox" value="{!Activity_Logs__c.Notes__c}" rendered="{!IsLogComments}" />  
+       </apex:outputPanel>
+      </apex:outputPanel>
+
+      </apex:outputPanel>
+      <br/>
+      <br/>
+      <apex:outputPanel id="CurrentLog" rendered="{!(IsLogging && IsLogDone == false)}"> 
+          <apex:outputText value="Activity - {!Activity_Logs__c.Name}" rendered="{!IsLogging}"/>
+         <table>
+             <tr> 
+             <td>
+          <apex:image url="{!URLFOR($Resource.ALResource, '295.gif')}" width="25" height="25"/>
+          </td>
+          <td rowspan="2">
+          <apex:outputText value="Logging for"  id="LoggedInLable"/> <br/>
+          <apex:outputText value="{!Logging }" id="LoggedInTime"/> <br/>
+          </td>
+          </tr>
+         </table> 
+      </apex:outputPanel>
+        <apex:actionPoller action="{!IncrementTimer}" enabled="{!(IsLogging && IsLogDone == false)}" rerender="CurentTime,LoggedInTime" interval="5"/>   
+        <apex:outputPanel Id="LogName"> 
+      <apex:inputField value="{!Activity_Logs__c.Name}" rendered="{!(!IsLogging)}" />
+      </apex:outputPanel>     
+      <br/>
+      <apex:commandButton value="Log" alt="Start" action="{!LogStartTime}" styleClass="LoggerButtonStyle" rendered="{!(!IsLogging  && !IsLogDone ) }"/>
+      <apex:commandButton value="Stop" action="{!LogStopTime}" styleClass="LoggerButtonStyle" rendered="{!(IsLogging && IsLogDone == false)}"/>
+      <apex:commandButton value="Save" action="{!LogSave}" styleClass="LoggerButtonStyle" rendered="{!IsLogDone}" />
+      <apex:commandButton value="Delete" action="{!LogDelete}" styleClass="LoggerButtonStyle" rendered="{!IsLogDone}"/>
+  
+  </apex:form>
+  </tr>
+  </table>
+  <!-- End Default Content REMOVE THIS -->
+</apex:page>

@@ -1,0 +1,39 @@
+<apex:page showHeader="false" sidebar="false" standardController="Account" >
+<style>
+
+fieldSet.TRPanel {
+border-color:#FF9900;
+border-width:2px;
+border-style:solid;
+
+}
+</style>
+<div style="TRPanel">
+<apex:form >       
+    <apex:pageblock mode="maindetail" >
+    <apex:pageblockSection title="Name" collapsible="false">              
+              <apex:inputField value="{!Account.name}"/>                    
+            </apex:pageblockSection>
+            <apex:pageBlockSection title="Account Detail" collapsible="false">                
+                <apex:inputField value="{!Account.AccountNumber}" /> 
+                <apex:inputField value="{!Account.Phone}"/>
+                <apex:inputField value="{!Account.Industry}"/>                
+                <apex:inputField value="{!Account.Description}"/>  
+                <apex:inputField value="{!Account.Fax}" /> 
+                <apex:inputField value="{!Account.ParentId}"/>
+                <apex:inputField value="{!Account.Rating}"/>                
+                <apex:inputField value="{!Account.Sic}"/>
+                <apex:inputField value="{!Account.TickerSymbol}" /> 
+                <apex:inputField value="{!Account.Type}"/>
+                <apex:inputField value="{!Account.website}"/>                
+                <apex:inputField value="{!Account.LastModifiedByID}"/>  
+            </apex:pageBlockSection>       
+      
+         <div align="right">            <apex:commandbutton action="{!Save}" value="Save" />
+            <apex:commandbutton action="{!Save}" value="Next" />
+         
+         </div>
+     </apex:pageblock>
+    </apex:form>        
+</div>    
+</apex:page>

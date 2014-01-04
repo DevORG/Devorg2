@@ -1,0 +1,52 @@
+<apex:page controller="My_Custom_Controller" sidebar="true" showHeader="true" standardStylesheets="false">
+ <meta name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0;
+  user-scalable=0;"/>
+  <style>
+    #home { position: relative; top: 0px; }
+  </style>
+  <script type="application/x-javascript" src="/mobileclient/api/mobileforce.js"></script>
+  <script>
+  function callcontroller(){
+      mycontroller();
+  }
+  
+  function OnSubmitForm()  {
+  if(isSave) {
+       document.searchForm.action ="vfmobiledemo?isSave='true'";
+       alert(isSave);
+      }
+      return true;
+    }
+  
+  
+  </script>
+  
+  <!-- <apex:form > -->
+  <form name="searchForm" method="post" onSubmit="return OnSubmitForm();">   
+  <apex:form >
+          
+  <apex:pageBlock title="Account" mode="inlineEdit">
+    <apex:pageBlockButtons >
+                <apex:commandButton action="{!edit}" id="editButton" value="Edit"/>
+                <apex:commandButton action="{!save}" id="saveButton" value="Save"/>
+                <apex:commandButton onclick="resetInlineEdit()" id="cancelButton" value="Cancel"/>
+            </apex:pageBlockButtons>  
+         <!-- <a href="#" onclick="callcontroller();">Save me</a> 
+            <apex:actionFunction name="mycontroller" action="{!Save}" /> -->
+            <input type="submit" value="Save me" onclick="isSave=true" style="cursor: pointer;background:none;border:0;cursor: hand;background-color: transparent;text-decoration: underline;" />
+            
+           <!-- <apex:commandLink action="{!Save}" value="Save me"/> <apex:outputField value="{!Acc.Name}"/>    -->
+           <apex:pageblocktable value="{!ListOfAccount}" var="Acc"  >
+            <apex:column headerValue="Account Name">
+                   <apex:outputField value="{!Acc.Name}">  
+                       <apex:inlineEditSupport showOnEdit="saveButton, cancelButton" hideOnEdit="editButton" event="ondblclick" changedStyleClass="myBoldClass" resetFunction="resetInlineEdit"/>
+                   </apex:outputField>
+                 <!-- <input name="Name" value="{!Acc.Name}"/>    -->                                     
+            </apex:column>    
+   
+        </apex:pageblocktable>
+    </apex:pageBlock>
+    </apex:form>
+    </form>
+ <!-- </apex:form> -->
+</apex:page>

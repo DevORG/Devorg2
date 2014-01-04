@@ -1,0 +1,15 @@
+<apex:page controller="ListPageCntrl">
+  <apex:sectionHeader />
+ 
+  <apex:form >
+      <apex:pageblock >
+          <apex:dataTable value="{!accList}"  var="ac">  
+          <apex:column >           
+              <apex:dataTable value="{!ac}" var="v">
+                 <apex:column value="{!v.name}"/>              
+              </apex:dataTable>
+              </apex:column>
+          </apex:dataTable>
+      </apex:pageblock>
+  </apex:form>
+</apex:page>

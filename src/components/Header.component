@@ -1,0 +1,115 @@
+<apex:component id="headerComponent">
+<style>
+#logoDiv {
+   width: 1000px;
+   height: 105px;
+      float: left;
+}
+
+
+
+.tbar {
+background-color:#909090;
+background-image:none;
+
+
+}
+
+.menuLinks{
+    color:blue;
+    font: 11px calibri;
+}
+
+.menuHeadLinks{
+     color:grey;
+    font: 13px calibri;
+    font-weight:bold;
+    align :left;
+}
+
+#sub_menu{
+   width: 500px;
+   height: 125px;  
+   float: left;
+   z-index:80;
+
+}
+
+
+</style>
+
+<script type="text/javascript">
+var closetimer  = 0;
+function tell(string)  {
+    alert("for intereting one is AAAA and three is CCCC");
+}
+function showBlock(){
+document.getElementById('sub_menu').style.display = 'none';
+}
+function subMenu(show) {
+if (show){
+    document.getElementById('sub_menu').style.display = 'block';    
+    } else {
+    closetimer = window.setTimeout(showBlock,100);    
+    }
+}
+function closeTimer()
+{
+ if(closetimer)
+    {
+        window.clearTimeout(closetimer);
+        closetimer = null;
+    }
+}   
+</script>
+
+
+
+
+
+
+
+ <div id="logoDiv">          
+        <apex:image value="{!$Resource.MyTR_logo}" width="1000" height="75" ></apex:image>
+        <apex:toolbar height="30px" styleClass="tbar" itemSeparator="line">
+            <apex:outputLink onmouseover="javascript:subMenu(true);" onmouseout="javascript:subMenu(false);">MENU</apex:outputLink>
+            <apex:toolbarGroup itemSeparator="line" style="tbar">
+               <apex:outputLink >MY PROFILE</apex:outputLink> 
+            </apex:toolbarGroup>
+        </apex:toolbar>
+         <div id="sub_menu" onmouseover="javascript:closeTimer();" onmouseout="javascript:subMenu(false);" 
+                 style =" display:none;position:relative;background-color:lightgrey;text-decoration:none;" >
+                 
+         <table width = "100%">          
+          <tr>
+              <td style = "vertical-align:top">
+                  <ul style = "padding: 0" class = "horizontal">   
+                      <li style = "list-style: none;"><a class = "menuHeadLinks">Alerts and Notifications</a></li>                    
+                       <li style = "list-style: none;"><a href="http://nishabhat-developer-edition.ap1.force.com/test/AlertsandNotification?LabelId=001" class = "menuLinks">Data Notifications (DNs)</a></li> 
+                       <li style = "list-style: none;"> <a href="http://nishabhat-developer-edition.ap1.force.com/test/AlertsandNotification?LabelId=002" class = "menuLinks">Product Notifications (PCNs)</a> </li>
+                       <li style = "list-style: none;"> <a href="http://nishabhat-developer-edition.ap1.force.com/test/AlertsandNotification?LabelId=003" class = "menuLinks">RIC Change events</a> </li>
+                       <li style = "list-style: none;"> <a href="http://nishabhat-developer-edition.ap1.force.com/test/AlertsandNotification?LabelId=004" class = "menuLinks">Service Alerts</a></li> 
+                  </ul>
+              </td>
+              <td style = "vertical-align:top">
+                  <ul style = "padding: 0" class = "horizontal">  
+                      <li style = "list-style: none;"><a class = "menuHeadLinks">Product Information</a></li>                     
+                       <li style = "list-style: none;"><a href="http://nishabhat-developer-edition.ap1.force.com/test/ProductInfoPage?LabelId=005" class = "menuLinks">Thomson Reuters Eikon</a></li> 
+                       <li style = "list-style: none;"> <a href="http://nishabhat-developer-edition.ap1.force.com/test/ProductInfoPage?LabelId=006" class = "menuLinks">Thomson Reuters Eikon for Wealth Management</a> </li>                      
+                  </ul>
+              </td>
+              <td style = "vertical-align:top">
+               <ul>
+                  <li style = "list-style: none;"><a class = "menuHeadLinks">Contact Us</a></li>    
+                  <li style = "list-style: none;"><a href="#" class = "menuLinks">Contact us Online</a></li> 
+               </ul>
+               </td>
+          </tr>
+          </table>
+        </div>
+
+        
+ </div>    
+  <div class="clear"></div>
+
+</apex:component>

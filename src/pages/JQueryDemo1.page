@@ -1,0 +1,38 @@
+<apex:page >
+<apex:includeScript value="{!URLFOR($Resource.jqueryDemo, 'js/jquery-1.5.1.min.js')}"/>
+    <!--<apex:includeScript value="{!URLFOR($Resource.jqueryDemo, 'js/jquery-ui-1.8.14.custom.min.js')}"/> -->
+   <!-- <apex:stylesheet value="{!URLFOR($Resource.jqueryDemo, 'css/ui-lightness/jquery-ui-1.8.14.custom.css')}"/> -->
+    
+<style type="text/css">
+    #email.watermark { color: #999; }
+    
+</style>
+<script type="text/javascript">
+var j$ = jQuery.noConflict();
+j$(document).ready(function() {
+ 
+    var watermark = 'Puts your email address';
+ 
+    //init, set watermark text and class
+    j$('#email').val(watermark).addClass('watermark');
+ 
+    //if blur and no value inside, set watermark text and class again.
+    j$('#email').blur(function(){
+        if (j$(this).val().length == 0){
+            j$(this).val(watermark).addClass('watermark');
+        }
+    });
+ 
+    //if focus and text is watermrk, set it to empty and remove the watermark class
+    j$('#email').focus(function(){
+        if (j$(this).val() == watermark){
+            j$(this).val('').removeClass('watermark');
+        }
+    });
+});
+ 
+</script>
+<h2>jQuery - Watermark on input text</h2>
+ 
+<input id="email" type="text" />
+</apex:page>

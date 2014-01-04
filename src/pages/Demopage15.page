@@ -1,0 +1,44 @@
+<apex:page StandardController="Contact" extensions="TestAutocomplete">
+ <apex:includeScript value="/soap/ajax/18.0/connection.js" />
+<apex:includeScript value="/soap/ajax/18.0/apex.js" />
+
+<script>
+    var j$ = jQuery.noConflict();
+    j$(document).ready(function(){init();});
+
+    function init()
+    {
+        var mySourceText = "ActionScript AppleScript Asp BASIC C "
+           + "C++ Clojure COBOL ColdFusion Erlang Fortran Groovy "
+           + "Haskell Java JavaScript Lisp Perl PHP Python Ruby "
+           + "Scala Scheme";
+
+        var mySource = mySourceText.split(" ");
+
+        j$("[id$='myInput']").autocomplete({ 
+            minLength: 2,
+            autoFocus: true,
+            source: function(request, response){ 
+                    response(GetSourceAjaxAPI(request.term)); }
+        });
+    }
+
+    function GetSourceAjaxAPI(s)
+    {
+        var result = sforce.apex.execute("TestAutocomplete", 
+                     "GetAutocompleteValuesAjaxAPI", {SearchTerm:s});
+        return result;
+    }
+</script>
+
+<apex:form >
+    <apex:pageblock >
+        <apex:pageblocksection >
+            <apex:pageblocksectionitem >
+                <apex:inputfield id="myInput" value="{!Contact.FirstName}" />
+            </apex:pageblocksectionitem>
+        </apex:pageblocksection>
+    </apex:pageblock>
+</apex:form>
+
+</apex:page>

@@ -1,0 +1,165 @@
+<!---------------------------------------------------------------------
+- Author        : DeveloperAtWork
+- Functionality : Cloud Spokes Challenge - 2562
+- Description   :  Tree- Like Data Selection for Products on Case.
+-                  
+- This Visualforce page is being displayed on click of "Search Prouduct"  
+- Button available on Case Record.
+- CS stands for Cloud Spokes as part of Coding Standards.
+------------------------------------------------------------------------>
+<apex:page standardController="Case"  tabstyle="Product2" extensions="CS_ProductTreeView" action="{!GenerateTreeStructureForProducts}">
+    <apex:form id="formId" >
+        <!-- Including Static Resource for enabling DynaTree JSquery  -->
+        <apex:includeScript value="{!URLFOR($Resource.DynaTree, 'jquery/jquery.js' )}" />
+        <apex:includeScript value="{!URLFOR($Resource.DynaTree, 'jquery/jquery-ui.custom.js' )}" />
+        <apex:includeScript value="{!URLFOR($Resource.DynaTree, 'jquery/jquery.cookie.js' )}" />
+        <apex:includeScript value="{!URLFOR($Resource.DynaTree, 'src/jquery.dynatree.js' )}" />    
+        <apex:stylesheet value="{!URLFOR($Resource.DynaTree, 'src/skin/ui.dynatree.css')}" />
+        <!-- On VF page load , below script gets executed which displays the tree structure. -->
+        <script type="text/javascript">
+            var keyId;
+             var find=0;
+            $(function(){       
+                $("#tree").dynatree({
+                    onActivate: function(node) {},                            
+                    persist: false,
+                    autoCollapse: false,
+                    generateIds: false,
+                    checkbox: true,
+                    classNames: {
+                        checkbox: "dynatree-radio",
+                        expanded: "dynatree-expanded"
+                    },
+                    selectMode: 1,
+                    children:{!LstOfProductNodes} ,           
+                    onSelect: function(select, node) {
+                    // Get a list of all selected nodes, and convert to a key array:
+                        var selKeys = $.map(node.tree.getSelectedNodes(), function(node){                  
+                            keyId=node.data.key;              
+                            return node.data.key;
+                        });          
+                     },
+                });
+            }); 
+            
+            /* This function is used to search the entered keyword in tree on click of "Search" button 
+               available on VF page. */ 
+            function Search(value){ 
+               find=0;
+               $("#tree").dynatree("getRoot").visit(function(node){
+                    node.expand(false);
+                    
+                    // If the keyword is found , the desired nodes are highlighted.         
+                    if(node.data.title.toLowerCase().trim().indexOf(value.toLowerCase().trim())>=0 && value!=''){
+                        node.data.title="<strong>"+node.data.title +"</strong>";
+                        find=1;
+                        node.makeVisible();
+                        node.render();
+                    }
+                     // If the keyword is not found , the desired nodes appear in normal fashion. 
+                    else if(node.data.title.toLowerCase().trim().indexOf(value.toLowerCase().trim())<0 || value=='' ){          
+                         if((node.data.title).indexOf('<')!=-1){
+                             node.data.title= (node.data.title).substring(8,(node.data.title).length-9);
+                         }               
+                        node.render();
+                    }
+                }); 
+            }   
+            
+            // This function expands all the nodes of tree on click of "Expand All" link available on VF page.
+            function Expand(value){             
+                $("#tree").dynatree("getRoot").visit(function(node){
+                    if(node.data.title.toLowerCase().trim().indexOf(value.toLowerCase().trim())>=0 && value!=''){
+                        node.data.title="<strong>"+node.data.title +"</strong>";
+                        node.makeVisible();
+                        node.render();
+                    }
+                    if((node.data.title).indexOf('<')!=-1){
+                         node.data.title= (node.data.title).substring(8,(node.data.title).length-9);
+                     }               
+                     node.render();
+                    node.expand(true);
+                });
+            }    
+            
+            // This function collapses all the nodes of tree on click of "Collapse All" link available on VF page.   
+            function Collapse(value){       
+                $("#tree").dynatree("getRoot").visit(function(node){
+                    if(node.data.title.toLowerCase().trim().indexOf(value.toLowerCase().trim())>=0 ){
+                        node.data.title="<strong>"+node.data.title +"</strong>";                        
+                        node.render();
+                    }
+                    if((node.data.title).indexOf('<')!=-1){
+                         node.data.title= (node.data.title).substring(8,(node.data.title).length-9);
+                     }               
+                     node.render();
+                    node.expand(false);
+                });
+            }   
+            
+            // Below function is called on click of Save button for updating CS_Product__c field on Case record.
+            function updateCaseProd(){  
+                // set up my param to pass to action function     
+                /* call my action function - keyId variable should be set to 'ProductId' in my controller */       
+                if(keyId==null || keyId ==''){
+                    alert('You have made no selection.Please select one child product.');
+                }else{
+                    updateCase(keyId);
+                }   
+            }
+            // Below function displays an error message , if keyword is not found in the tree.
+            function hasFind(){
+                if(find==0){
+                    alert('No Match found.');        
+                }
+                
+            }
+            
+            // Below function displays search results in tree on keystroke of Enter button.
+            function checkEnter(e) {     
+                if(window.event){                    
+                    key = window.event.keyCode;     // for IE Users.              
+                } 
+                else{                    
+                    key = e.which;     // for firefox , Chrome users.              
+                }               
+                if(key == 13) {                    
+                    Search(document.getElementById('{!$Component.formId.PgBlckId.fnameId}').value); 
+                    hasFind();          
+                    return false;               
+                } else{                    
+                    return true;               
+                }          
+            }
+        </script>
+        <!-- Below line displayes the image and header title displayed on VF page.-->
+        <apex:sectionHeader title="Search" subtitle="Products"/> 
+        
+        <apex:PageBlock id="PgBlckId"> 
+            <!-- Below lines enables the Save and Cancel button on VF page.-->        
+            <apex:PageBlockButtons >    
+                <apex:commandButton value="Save" status="refreshData"  oncomplete="updateCaseProd();" />   
+                <apex:commandButton value="Cancel" action="{!Cancel}" />  
+                    <apex:actionStatus startText=" Processing.."  id="refreshData">
+                <apex:facet name="start">
+                    <img src="/img/loading.gif" title="Processing.." /> Loading..
+                  </apex:facet>
+             </apex:actionStatus>      
+            </apex:PageBlockButtons>      
+            &nbsp;&nbsp;&nbsp;     
+            <apex:inputText value="{!InputText}" Id="fnameId"  onkeypress="return checkEnter(event)"/> 
+            <!-- Search results are rendered on click of Search button with help of actionFunction and param tags.-->      
+            <apex:commandButton reRender="tree" value="Search"  oncomplete="hasFind();" onClick="Search(document.getElementById('{!$Component.formId.PgBlckId.fnameId}').value);"/>
+            <apex:actionFunction name="updateCase" action="{!updateCase}" reRender="formId">
+                <apex:param name="ProductId" value="ProductId" assignTo="{!ProductId}" />
+            </apex:actionFunction>&nbsp;&nbsp;
+            <!-- Enables collapse and exapand all link on VF page.--> 
+            <apex:commandLink reRender="tree" value="Expand All"  onClick="Expand(document.getElementById('{!$Component.formId.PgBlckId.fnameId}').value);"/>&nbsp;&nbsp;
+            <apex:commandLink reRender="tree" value="Collapse All"  onClick="Collapse(document.getElementById('{!$Component.formId.PgBlckId.fnameId}').value);"/>
+            <apex:PageBlockSection columns="1">
+            <!-- Below div is rendered on loading of VF page with help of DynaTree JSQuery.--> 
+                <div id="tree"> </div>
+            </apex:PageBlockSection>
+        </apex:PageBlock>      
+    </apex:form>
+</apex:page>

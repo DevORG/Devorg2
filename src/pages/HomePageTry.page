@@ -1,0 +1,181 @@
+<apex:page showheader="false" sidebar="false" standardStylesheets="true">
+<style>
+fieldSet.TRPanel {
+border-color:#FF9933;
+color: #ffffff;
+}
+legend.TRFont 
+{
+  color:#FF9900;
+  
+}
+</style>
+<apex:composition template="HomePageTemplate">
+<apex:define name="HomePageContent">
+ <apex:form >
+                <table border="0">
+                  <tr>
+                     <td colspan="3">
+                          <b><apex:outputLabel value="To complete the registration you must complete the following details"/></b>
+                     </td>
+                     </tr>
+                     <tr>
+                     <div style="height:2%;"/>
+                     </tr>
+                     <tr>
+                     <td>
+                        <fieldSet class="TRPanel">
+                           <legend class="TRFont" >Login Details</legend>
+                                <table>
+                                  <tr>
+                                      <td>
+                                          <apex:outputLabel value="Email"/>
+                                       </td>
+                                       <td>
+                                           <apex:inputText size="35" />
+                                       </td>
+                                  </tr>
+                                  <tr>
+                                      <td>
+                                           <apex:outputLabel value="New Password"/>
+                                       </td>
+                                       <td>
+                                           <apex:inputText size="35" />
+                                       </td>
+                                 </tr>
+                                 <tr>
+                                      <td>
+                                           <apex:outputLabel value="Confirm New Password"/>
+                                       </td>
+                                       <td>
+                                             <apex:inputText size="35" />
+                                        </td>
+                                 </tr>
+                               </table>
+                           </fieldset>
+                        </td>
+                        <td width="7%">
+                        </td>
+                        <td rowspan="2" style="left-padding:10%;">
+                            <fieldSet class="TRPanel">
+                           <legend class="TRFont" >Contact Details</legend>
+                                <table>
+                                  <tr>
+                                      <td>
+                                          <apex:outputLabel value="Title"/>
+                                       </td>
+                                       <td>
+                                           <apex:inputText size="35" />
+                                       </td>
+                                  </tr>
+                                  <tr>
+                                      <td>
+                                           <apex:outputLabel value="First Name"/>
+                                       </td>
+                                       <td>
+                                           <apex:inputText size="35" />
+                                       </td>
+                                 </tr>
+                                 <tr>
+                                      <td>
+                                           <apex:outputLabel value="Last Name"/>
+                                       </td>
+                                       <td>
+                                             <apex:inputText size="35" />
+                                        </td>
+                                 </tr>
+                                 <tr>
+                                      <td>
+                                           <apex:outputLabel value="Telephone Number"/>
+                                       </td>
+                                       <td>
+                                             <apex:inputText size="35" />
+                                        </td>
+                                 </tr>
+                                 <tr>
+                                      <td>
+                                           <apex:outputLabel value="Company Name"/>
+                                       </td>
+                                       <td>
+                                             <apex:inputText size="35" />
+                                        </td>
+                                 </tr>
+                                 <tr>
+                                      <td>
+                                           <apex:outputLabel value="Address"/>
+                                       </td>
+                                       <td>
+                                             <apex:inputText size="35" />
+                                        </td>
+                                 </tr>
+                                 <tr>
+                                      <td>
+                                           <apex:outputLabel value="City"/>
+                                       </td>
+                                       <td>
+                                             <apex:inputText size="35" />
+                                        </td>
+                                 </tr>
+                                 <tr>
+                                      <td>
+                                           <apex:outputLabel value="Post/Zip Code"/>
+                                       </td>
+                                       <td>
+                                             <apex:inputText size="35" />
+                                        </td>
+                                 </tr>
+                                 <tr>
+                                      <td>
+                                           <apex:outputLabel value="Country"/>
+                                       </td>
+                                       <td>
+                                             <apex:inputText size="35" />
+                                        </td>
+                                 </tr>
+                               </table>
+                           </fieldset>
+                     </td>
+                    </tr>
+  <tr>
+     <td>
+<fieldSet class="TRPanel">
+   <legend class="TRFont">User Profile</legend>
+    <table>
+      <tr>
+        <td>
+   <apex:outputLabel value="Language Preference"/>
+   </td>
+   <td>
+     <apex:inputText size="35" />
+     </td>
+     </tr>
+     <tr>
+        <td>
+   <apex:outputLabel value="Job Category"/>
+   </td>
+   <td>
+     <apex:inputText size="35" />
+     </td>
+     </tr>
+       <tr>
+        <td>
+   <apex:outputLabel value="Job Role"/>
+   </td>
+   <td>
+     <apex:inputText size="35" />
+     </td>
+     </tr>
+     </table>
+</fieldset>
+</td>
+</tr>
+<tr>
+   <td colspan="3" align="right">
+     <apex:commandButton value="Submit" />
+   </td>
+</tr>
+</table>
+</apex:form>
+</apex:define>
+</apex:composition>
+</apex:page>

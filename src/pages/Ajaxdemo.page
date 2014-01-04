@@ -1,0 +1,33 @@
+<apex:page standardController="Account" extensions="AccountAjax_Ext">
+<apex:form >
+<apex:pageBlock >
+ <apex:pageBlockSection id="coreSection" columns="2" title="Request Info" showHeader="true" collapsible="false">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel for="Requestor" value="User"/>
+                    <apex:actionRegion >
+                        <apex:inputField required="true" id="Requestor" value="{!Account.OwnerId}">
+                        <apex:actionSupport event="onchange"
+                            action="{!updateManager}"
+                            rerender="messages, Manager"
+                            focus="Manager"
+                            status="requestorChangeStatus"/>
+                            <apex:actionStatus id="requestorChangeStatus">
+                                <apex:facet name="start">
+                                    <apex:outputPanel >
+                                    <apex:outputText value="Looking up manager..." />
+                                    <apex:image url="{!URLFOR($Resource.AjaxAnimation)}"  /> 
+                                </apex:outputPanel>
+                                </apex:facet>
+                            </apex:actionStatus>
+                        </apex:inputField>
+                    </apex:actionRegion>
+                </apex:pageBlockSectionItem>
+                 </apex:pageBlockSection>
+                 <apex:outputPanel id="Manager" >
+                 <apex:outputLabel >Manger Id: </apex:outputLabel>
+                   <apex:outputtext value="{!UserManager}"/>
+                   <apex:inputField value="{!Account.OwnerId}"/>
+                   </apex:outputPanel>
+    </apex:pageBlock>
+ </apex:form>
+</apex:page>

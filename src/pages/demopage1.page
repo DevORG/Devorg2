@@ -1,0 +1,18 @@
+<apex:page showHeader="false" sidebar="false" controller="democontroller1">
+ <div id="LogoDiv">       
+ <apex:form >     
+ <apex:image value="{!IF(Check,'{!$Resource.TR_logo}','{!$Resource.pkb_image_bannerBg}')}"
+         width="261" height="56" > </apex:image>
+         
+        <apex:image value="{!URLFOR(IF(Check, $Resource.TR_logo,$Resource.pkb_image_bannerBg))}"/>
+       <!--  <apex:image value="{!URLFOR($Resource.images_checkbox, IF(h.ispublic, 'true.gif','false.gif'))}"/> -->
+
+     <apex:commandButton value="{!IF(Check, 'Show ', 'Hide ')}Private" action="{!Dummy}" rendered="true" />
+     <apex:actionRegion >
+     <apex:inputText value="{!validate}"/>
+       <apex:commandButton action="{!Validatetext}"  value="Click here" immediate="true"/>
+       </apex:actionRegion>
+     </apex:form>
+   
+         </div>   
+</apex:page>
