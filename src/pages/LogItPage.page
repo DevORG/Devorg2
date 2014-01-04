@@ -1,3 +1,0 @@
-<apex:page sidebar="false" showHeader="false" standardStylesheets="true" title="Log It">
-<c:LogITComponent />
-</apex:page>
